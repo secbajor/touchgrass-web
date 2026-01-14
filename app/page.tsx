@@ -120,8 +120,10 @@ export default function TouchGrassPage() {
             transform: `translateX(-50%) translateY(${textTranslateY}px)`,
           }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold ">((touch grass))</h1>
-          <p>mar 26-29, 2026</p>
+          <h1 className="text-4xl md:text-6xl font-bold whitespace-nowrap">
+            ((touch grass))
+          </h1>
+          <p className="whitespace-nowrap">mar 26-29, 2026</p>
         </div>
       </div>
 
@@ -155,13 +157,7 @@ export default function TouchGrassPage() {
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                 asChild
               >
-                <a
-                  href="https://example.com/signup"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Apply to attend
-                </a>
+                <a href="/rsvp">Apply to attend</a>
               </Button>
             </div>
           </div>
@@ -173,7 +169,7 @@ export default function TouchGrassPage() {
             <div className="max-w-6xl mx-auto space-y-12">
               <div className="text-center space-y-4">
                 <h2 className="text-4xl md:text-5xl font-bold text-earth">
-                  Event Details
+                  event details
                 </h2>
                 <div className="w-20 h-1 bg-grass mx-auto" />
               </div>
@@ -210,13 +206,8 @@ export default function TouchGrassPage() {
                       <li className="flex items-start gap-3">
                         <span className="text-grass font-bold text-xl">🍛</span>
                         <div>
-                          <span className="font-semibold">Location:</span>
-                          <br />
-                          Meals included
-                          <br />
-                          <span className="text-sm text-muted-foreground">
-                            3 farm-fresh meals daily
-                          </span>
+                          <span className="font-semibold">Meals:</span>
+                          <br />3 farm-fresh meals included daily
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -248,22 +239,6 @@ export default function TouchGrassPage() {
                         </div>
                       </li>
                     </ul>
-                  </div>
-
-                  <div className="text-center">
-                    <Button
-                      size="lg"
-                      className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold w-full"
-                      asChild
-                    >
-                      <a
-                        href="https://example.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Reserve Your Spot
-                      </a>
-                    </Button>
                   </div>
                 </div>
 
@@ -357,17 +332,20 @@ export default function TouchGrassPage() {
         <section className="py-20 md:py-32 bg-sand">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-earth">
-                Who should come
-              </h2>
+              <div className="text-center space-y-4 mb-8">
+                <h2 className="text-4xl md:text-5xl font-bold text-earth">
+                  who should come{" "}
+                </h2>
+                <div className="w-20 h-1 bg-grass mx-auto" />
+              </div>
               <div className="space-y-6 text-lg leading-relaxed text-earth-dark">
                 <p>
                   You're building in crypto/web3. Not just for the money —
                   though that's fine too — but because you think this technology
                   can actually help people organize, coordinate, and create
-                  value together.
+                  regenerative value together.
                 </p>
-                <p className="text-muted-foreground">
+                <p>
                   You're curious about what happens when you step away from the
                   screen. You want to meet other builders who care about
                   community, sustainability, and making things that last.
@@ -383,13 +361,7 @@ export default function TouchGrassPage() {
                   className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
                   asChild
                 >
-                  <a
-                    href="https://example.com/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Apply to attend
-                  </a>
+                  <a href="/rsvp">Apply to attend</a>
                 </Button>
               </div>
             </div>
@@ -496,11 +468,22 @@ export default function TouchGrassPage() {
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Left Column - Email Form */}
                 <div className="space-y-4">
+                  <div className="mb-6">
+                    <h3 className="text-3xl md:text-4xl pb-2 font-bold text-earth">
+                      Contact us
+                    </h3>
+                    <a
+                      href="mailto:diy@touchgrass.how"
+                      className="text-grass hover:text-grass-dark text-lg underline"
+                    >
+                      diy@touchgrass.how
+                    </a>
+                  </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-earth">
                     Stay updated
                   </h3>
                   <p className="text-earth-dark text-lg">
-                    Get event updates and announcements delivered to your inbox.
+                    Not convinced yet? We'll remind you in a week or two.
                   </p>
                   <form
                     name="newsletter"
@@ -567,13 +550,7 @@ export default function TouchGrassPage() {
                       className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                       asChild
                     >
-                      <a
-                        href="https://example.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Apply to attend
-                      </a>
+                      <a href="/rsvp">Apply to attend</a>
                     </Button>
                   </div>
                 </div>
@@ -586,8 +563,7 @@ export default function TouchGrassPage() {
         <footer className="bg-earth text-white py-12">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm opacity-80">
-              © 2026 ((touch grass)) <br /> all rights reserved. it's time to go
-              outside.
+              © 2026 ((touch grass)) <br /> it's time to go outside.
             </p>
           </div>
         </footer>

@@ -436,7 +436,7 @@ export default function TouchGrassPage() {
                       ((touch grass)) is primarily a community-focused event, so
                       there won't be any dedicated spaces for sponsors.
                       Nonetheless, if you or your team want to support this
-                      event, send us a note at hello@touchgrass.how and we'll be
+                      event, send us a note at brb@touchgrass.how and we'll be
                       happy to discuss options.
                     </AccordionContent>
                   </AccordionItem>
@@ -473,10 +473,10 @@ export default function TouchGrassPage() {
                       Contact us
                     </h3>
                     <a
-                      href="mailto:diy@touchgrass.how"
-                      className="text-grass hover:text-grass-dark text-lg underline"
+                      href="mailto:brb@touchgrass.how"
+                      className="text-grass hover:text-grass-dark text-lg"
                     >
-                      diy@touchgrass.how
+                      brb@touchgrass.how
                     </a>
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-earth">

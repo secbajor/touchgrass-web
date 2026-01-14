@@ -15,26 +15,28 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Touch Grass - Reconnect with Nature",
+  title: "((touch grass)) - Web3 Builders Retreat",
   description:
-    "Disconnect from screens and reconnect with nature. Join us for an unforgettable outdoor experience.",
-  generator: "v0.app",
+    "An invitation to web3 builders determined to apply blockchain solutions to real world problems. Join us at a working farm in the Pacific Northwest.",
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
       },
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/favicon.ico",
+        sizes: "any",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 

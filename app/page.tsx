@@ -12,8 +12,14 @@ import {
 export default function TouchGrassPage() {
   const [scrollY, setScrollY] = useState(0);
   const [hasScrolledPast, setHasScrolledPast] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
   useEffect(() => {
+    setMounted(true);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
@@ -24,12 +30,15 @@ export default function TouchGrassPage() {
       }
     };
 
+    // Set initial scroll position
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handTop =
-    typeof window !== "undefined"
+    mounted && typeof window !== "undefined"
       ? Math.min(
           window.innerHeight * 0.15 + scrollY * 0.2,
           window.innerHeight * 1.1
@@ -40,7 +49,36 @@ export default function TouchGrassPage() {
   const overlayOpacity = 1;
 
   const showOverlay =
-    typeof window !== "undefined" ? scrollY < window.innerHeight * 1.5 : true;
+    mounted && typeof window !== "undefined"
+      ? scrollY < window.innerHeight * 1.5
+      : true;
+
+  const handleNewsletterSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      setFormStatus("error");
+    }
+  };
 
   return (
     <div className="relative">
@@ -63,7 +101,7 @@ export default function TouchGrassPage() {
         <div
           className="absolute left-1/2 w-30 md:w-35"
           style={{
-            top: `${handTop}px`,
+            top: mounted ? `${handTop}px` : "15vh",
             transform: `translateX(-50%) rotate(180deg)`,
           }}
         >
@@ -170,6 +208,18 @@ export default function TouchGrassPage() {
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
+                        <span className="text-grass font-bold text-xl">🍛</span>
+                        <div>
+                          <span className="font-semibold">Location:</span>
+                          <br />
+                          Meals included
+                          <br />
+                          <span className="text-sm text-muted-foreground">
+                            3 farm-fresh meals daily
+                          </span>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-3">
                         <span className="text-grass font-bold text-xl">💰</span>
                         <div>
                           <span className="font-semibold">Cost:</span>
@@ -236,7 +286,7 @@ export default function TouchGrassPage() {
                     </div>
                     <div className="bg-gray-300 rounded-lg overflow-hidden aspect-square">
                       <img
-                        src="/images/sheep-hello.png"
+                        src="/images/sheep-hello.jpg"
                         alt="Event photo 3"
                         className="w-full h-full object-cover"
                       />
@@ -456,6 +506,7 @@ export default function TouchGrassPage() {
                     name="newsletter"
                     method="POST"
                     data-netlify="true"
+                    onSubmit={handleNewsletterSubmit}
                     className="space-y-4"
                   >
                     <input type="hidden" name="form-name" value="newsletter" />
@@ -465,15 +516,37 @@ export default function TouchGrassPage() {
                         name="email"
                         placeholder="your@email.com"
                         required
-                        className="flex-1 px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass"
+                        disabled={
+                          formStatus === "submitting" ||
+                          formStatus === "success"
+                        }
+                        className="flex-1 px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
                       />
                       <button
                         type="submit"
-                        className="px-6 py-3 bg-grass text-white rounded-lg font-semibold hover:bg-grass-dark transition-colors"
+                        disabled={
+                          formStatus === "submitting" ||
+                          formStatus === "success"
+                        }
+                        className="px-6 py-3 bg-grass text-white rounded-lg font-semibold hover:bg-grass-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        Subscribe
+                        {formStatus === "submitting"
+                          ? "Subscribing..."
+                          : formStatus === "success"
+                          ? "Subscribed!"
+                          : "Subscribe"}
                       </button>
                     </div>
+                    {formStatus === "success" && (
+                      <p className="text-grass font-medium">
+                        Thanks for subscribing! Check your email for updates.
+                      </p>
+                    )}
+                    {formStatus === "error" && (
+                      <p className="text-destructive font-medium">
+                        Oops! Something went wrong. Please try again.
+                      </p>
+                    )}
                   </form>
                 </div>
 

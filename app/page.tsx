@@ -28,15 +28,19 @@ export default function TouchGrassPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handTop = Math.min(
-    window.innerHeight * 0.15 + scrollY * 0.2,
-    window.innerHeight * 1.1
-  );
+  const handTop =
+    typeof window !== "undefined"
+      ? Math.min(
+          window.innerHeight * 0.15 + scrollY * 0.2,
+          window.innerHeight * 1.1
+        )
+      : 0;
   const textOpacity = Math.max(1 - scrollY / 300, 0);
   const textTranslateY = -scrollY * 0.5; // Text moves up as user scrolls down
   const overlayOpacity = 1;
 
-  const showOverlay = scrollY < window.innerHeight * 1.5;
+  const showOverlay =
+    typeof window !== "undefined" ? scrollY < window.innerHeight * 1.5 : true;
 
   return (
     <div className="relative">

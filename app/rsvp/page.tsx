@@ -65,7 +65,7 @@ export default function RSVPPage() {
             <span className="md:hidden">
               <br />
             </span>{" "}
-            ((touch grass))
+            <span className="font-bold">// touch grass</span>
           </h1>
           <p className="text-xl text-white/90">
             March 26-29, 2026 • Elkenmist Farm & Retreat Center <br />{" "}
@@ -284,7 +284,7 @@ export default function RSVPPage() {
                 htmlFor="hopes"
                 className="block text-sm font-semibold text-earth mb-2"
               >
-                What do you hope for at ((touch grass))?
+                What do you hope for at <span className="font-bold">// touch grass</span>?
               </label>
               <textarea
                 id="hopes"

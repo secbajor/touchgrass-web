@@ -206,7 +206,7 @@ export default function RSVPPage() {
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
                   />
-                  <span className="text-earth-dark">Camping - shared yurt</span>
+                  <span className="text-earth-dark">Camping - shared yurt (mixed gender)</span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input

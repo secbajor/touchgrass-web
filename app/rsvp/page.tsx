@@ -162,7 +162,7 @@ export default function RSVPPage() {
                 Preferred Accommodation{" "}
                 <span className="text-destructive">*</span>
                 <span className="block text-xs font-normal text-muted-foreground mt-1">
-                  Select all that work for you
+                  Select all that work for you. Rooms will be assigned on a first come/first served basis. Final pricing is dependent on selected accommodation (camping is cheaper than rooms). 
                 </span>
               </label>
               <div className="space-y-3">

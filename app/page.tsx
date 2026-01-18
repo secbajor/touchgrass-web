@@ -121,9 +121,9 @@ export default function TouchGrassPage() {
           }}
         >
           <h1 className="text-4xl md:text-6xl font-bold whitespace-nowrap">
-            ((touch grass))
+            // touch grass
           </h1>
-          <p className="whitespace-nowrap">mar 26-29, 2026</p>
+          <p className="whitespace-nowrap">march 26-29, 2026 • near portland, OR</p>
         </div>
       </div>
 
@@ -147,11 +147,11 @@ export default function TouchGrassPage() {
               <h1 className="text-5xl md:text-7xl font-bold text-white text-balance">
                 ghost the group chat.
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
-                ((touch grass)) offers web3 builders a real-world setting to
-                explore applied regenerative web3—together, on a community farm
-                and forest in the pacific northwest.
-              </p>
+            <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
+              <span className="font-bold">// touch grass</span> offers web3 builders a real-world setting to
+              explore applied regenerative web3—together, on a community farm
+              and forest in the pacific northwest.
+            </p>
               <Button
                 size="lg"
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
@@ -292,7 +292,7 @@ export default function TouchGrassPage() {
                     build on the blockchain. build for the land.
                   </h3>
                   <p className="text-lg md:text-xl leading-relaxed">
-                    <span className="font-bold">((touch grass))</span> is an
+                    <span className="font-bold">// touch grass</span> is an
                     invitation to web3 builders determined to apply blockchain
                     solutions to real world problems. As the spirit of localism
                     and regeneration finds roots in web3, it's now more
@@ -307,7 +307,7 @@ export default function TouchGrassPage() {
                     and farm workshops.
                   </p>
                   <p className="text-base md:text-xl leading-relaxed">
-                    <span className="font-bold">((touch grass))</span> is a
+                    <span className="font-bold">// touch grass</span> is a
                     unique offering that roots blockchain innovation in a real,
                     land-based context.
                   </p>
@@ -340,10 +340,8 @@ export default function TouchGrassPage() {
               </div>
               <div className="space-y-6 text-lg leading-relaxed text-earth-dark">
                 <p>
-                  You're building in crypto/web3. Not just for the money —
-                  though that's fine too — but because you think this technology
-                  can actually help people organize, coordinate, and create
-                  regenerative value together.
+                  You're building, designing, or organizing in crypto/web3. You believe this technology can create regenerative value, and want to coordinate with others who share this vision. You might even be burnt out on crypto, but you still see the potential.
+
                 </p>
                 <p>
                   You're curious about what happens when you step away from the
@@ -433,7 +431,7 @@ export default function TouchGrassPage() {
                       Can I sponsor this event?
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground leading-relaxed">
-                      ((touch grass)) is primarily a community-focused event, so
+                      <span className="font-bold">// touch grass</span> is primarily a community-focused event, so
                       there won't be any dedicated spaces for sponsors.
                       Nonetheless, if you or your team want to support this
                       event, send us a note at brb@touchgrass.how and we'll be
@@ -446,12 +444,12 @@ export default function TouchGrassPage() {
                       Why is this happening?
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground leading-relaxed">
-                      ((touch grass)) might have started as a joke between Sara
+                      <span className="font-bold">// touch grass</span> might have started as a joke between Sara
                       Bajor and Ron Turetzky, but it's now a real event. We
                       noticed how much enthusiasm exists in the web3 community
                       for building blockchain technology that can actually help
                       people organize, coordinate, and create value together. So
-                      we created ((touch grass)) to be a space where such
+                      we created <span className="font-bold">// touch grass</span> to be a space where such
                       builders can meet each other and collaborate.
                     </AccordionContent>
                   </AccordionItem>
@@ -542,7 +540,7 @@ export default function TouchGrassPage() {
                       Ready to join us?
                     </h3>
                     <p className="text-white/90 mb-6 text-lg">
-                      Applications are now open for ((touch grass)) 2026.
+                      Applications are now open for <span className="font-bold">// touch grass</span> 2026.
                       Limited spots available.
                     </p>
                     <Button
@@ -563,7 +561,7 @@ export default function TouchGrassPage() {
         <footer className="bg-earth text-white py-12">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm opacity-80">
-              © 2026 ((touch grass)) <br /> it's time to go outside.
+              © 2026 <span className="font-bold">// touch grass</span> <br /> it's time to go outside.
             </p>
           </div>
         </footer>

@@ -162,7 +162,7 @@ export default function RSVPPage() {
                 Preferred Accommodation{" "}
                 <span className="text-destructive">*</span>
                 <span className="block text-xs font-normal text-muted-foreground mt-1">
-                  Select all that work for you. Rooms will be assigned on a first come/first served basis. Final pricing is dependent on selected accommodation (camping is cheaper than rooms). 
+                  Select all that work for you. Rooms will be assigned on a first come/first served basis. Final pricing is dependent on selected accommodation (camping is cheaper than rooms). Tents are available to borrow.
                 </span>
               </label>
               <div className="space-y-3">
@@ -294,6 +294,31 @@ export default function RSVPPage() {
                 className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
                 placeholder="Share your intentions and hopes for the experience"
               />
+            </div>
+
+
+            {/* Anything else */}
+            <div>
+              <label
+                htmlFor="anything-else"
+                className="block text-sm font-semibold text-earth mb-2"
+              >
+                Any questions/comments?
+              </label>
+              <textarea
+                id="anything-else"
+                name="anything-else"
+                rows={4}
+                disabled={formStatus === "submitting"}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
+                placeholder="Share anything else..."
+              />
+            </div>
+
+            <div>
+              <p>Once you submit this form, your responses will be reviewed by the event team. We are doing our best to accommodate everyone who is interested, but space is limited so we can only confirm your attendance once payment has been made.</p>
+              <br/>
+              <p className="font-bold">Total cost is estimated to be $300-400 depending on your selected accommodation. We will reach out with financial details and payment options!</p>
             </div>
 
             {/* Error Message */}

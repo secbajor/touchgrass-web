@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -16,6 +16,7 @@ export default function TouchGrassPage() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+  const lowerButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -52,6 +53,42 @@ export default function TouchGrassPage() {
     mounted && typeof window !== "undefined"
       ? scrollY < window.innerHeight * 1.5
       : true;
+
+  // Calculate the gap for the lower hand pointing at the Apply button
+  const lowerHandGap = (() => {
+    if (!mounted || typeof window === "undefined" || !lowerButtonRef.current) {
+      return 1000; // Start off-screen
+    }
+
+    const viewportHeight = window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const maxScroll = pageHeight - viewportHeight;
+
+    // Get button's current position in viewport
+    const buttonRect = lowerButtonRef.current.getBoundingClientRect();
+    const buttonTopAbsolute = scrollY + buttonRect.top;
+
+    // Scroll position when button top enters viewport
+    const buttonEntersScroll = buttonTopAbsolute - viewportHeight;
+
+    // Start showing hand at the halfway point between button entering and page bottom
+    const startScroll = buttonEntersScroll + (maxScroll - buttonEntersScroll) / 2;
+
+    // Gap that places hand exactly at the viewport bottom
+    const viewportBottomGap = viewportHeight - buttonRect.bottom;
+
+    // Before start point: hide hand just below viewport
+    if (scrollY < startScroll) {
+      return viewportBottomGap + 250; // Just below viewport bottom
+    }
+
+    // Interpolate from viewport bottom to final position (10px below button)
+    const progress = (scrollY - startScroll) / (maxScroll - startScroll);
+    const minGap = 10;
+
+    // At progress=0: hand at viewport bottom. At progress=1: hand at minGap.
+    return viewportBottomGap * (1 - progress) + minGap * progress;
+  })();
 
   const handleNewsletterSubmit = async (
     e: React.FormEvent<HTMLFormElement>
@@ -131,7 +168,7 @@ export default function TouchGrassPage() {
       <div className="h-[150vh]" />
 
       {/* Actual Landing Page Content */}
-      <main className="relative z-40 min-h-screen bg-gradient-to-b from-grass to-grass-dark">
+      <main className="relative z-40 min-h-screen bg-gradient-to-b from-grass to-grass-dark overflow-hidden">
         {/* Hero Section */}
         <section className="py-20 md:py-32 relative">
           {/* Moss texture overlay */}
@@ -460,7 +497,7 @@ export default function TouchGrassPage() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="bg-sand py-20 md:py-32">
+        <section className="bg-sand pb-60 pt-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -532,7 +569,7 @@ export default function TouchGrassPage() {
                 </div>
 
                 {/* Right Column - Apply CTA */}
-                <div className="bg-grass rounded-lg p-8 md:p-10 text-white text-center space-y-6 relative overflow-hidden">
+                <div id="lower-apply-cta" className="bg-grass rounded-lg p-8 md:p-10 text-white text-center space-y-6 relative overflow-visible">
                   {/* Moss texture overlay */}
                   <div className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none" />
                   <div className="relative z-10">
@@ -543,13 +580,26 @@ export default function TouchGrassPage() {
                       Applications are now open for <span className="font-bold">// touch grass</span> 2026.
                       Limited spots available.
                     </p>
-                    <Button
-                      size="lg"
-                      className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
-                      asChild
-                    >
-                      <a href="/rsvp">Apply to attend</a>
-                    </Button>
+                    <div ref={lowerButtonRef} className="relative inline-block">
+                      <Button
+                        size="lg"
+                        className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
+                        asChild
+                      >
+                        <a href="/rsvp">Apply to attend</a>
+                      </Button>
+                      {/* Hand pointing up at the button */}
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 w-24 md:w-28 pointer-events-none"
+                        style={{ top: `calc(100% + ${lowerHandGap}px)` }}
+                      >
+                        <img
+                          src="/images/handpointup.png"
+                          alt=""
+                          className="w-full h-auto drop-shadow-lg"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

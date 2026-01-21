@@ -15,9 +15,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "((touch grass)) - Web3 Builders Retreat",
+  title: "// touch grass - an event for web3 builders",
   description:
-    "An invitation to web3 builders determined to apply blockchain solutions to real world problems. Join us at a working farm in the Pacific Northwest.",
+    "An invitation to web3 builders determined to apply blockchain solutions to real world problems. Join us at a working farm in the Pacific Northwest. March 26-29, 2026",
   manifest: "/site.webmanifest",
   icons: {
     icon: [

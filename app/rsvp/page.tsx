@@ -68,7 +68,7 @@ export default function RSVPPage() {
             <span className="font-bold">// touch grass</span>
           </h1>
           <p className="text-xl text-white/90">
-            March 26-29, 2026 • Elkenmist Farm & Retreat Center <br />{" "}
+            March 26-29, 2026 • <a href="https://www.elkenmist.com" target="_blank">Elkenmist Farm & Retreat Center</a> <br />{" "}
             Skamokawa, WA 98647
           </p>
         </div>

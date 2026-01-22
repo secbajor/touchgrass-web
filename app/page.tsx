@@ -277,6 +277,7 @@ export default function TouchGrassPage() {
                       </li>
                     </ul>
                   </div>
+                 
                 </div>
 
                 {/* Right Column - Photos */}
@@ -365,39 +366,101 @@ export default function TouchGrassPage() {
           </div>
         </section>
 
-        {/* Who Should Come Section */}
+        {/* What We'll Explore Section */}
         <section className="py-20 md:py-32 bg-sand">
           <div className="container mx-auto px-4 md:px-8">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="text-center space-y-4 mb-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center space-y-4 mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-earth">
-                  who should come{" "}
+                  what we'll explore
                 </h2>
                 <div className="w-20 h-1 bg-grass mx-auto" />
               </div>
-              <div className="space-y-6 text-lg leading-relaxed text-earth-dark">
-                <p>
-                  You're building, designing, or organizing in crypto/web3. You believe this technology can create regenerative value, and want to coordinate with others who share this vision. You might even be burnt out on crypto, but you still see the potential.
 
-                </p>
-                <p>
-                  You're curious about what happens when you step away from the
-                  screen. You want to meet other builders who care about
-                  community, sustainability, and making things that last.
-                </p>
-                <p className="font-medium">
-                  You're ready to trade Discord for dirt under your fingernails.
-                  At least for a few days.
-                </p>
+              {/* Alternating Layout */}
+              <div className="space-y-16 lg:space-y-24">
+                {/* Section 1: Copy + Photo */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                      Communal Living: Past & Present
+                    </h3>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      How have people organized collective living throughout history, and what can we learn from them?
+                    </p>
+                    <h4 className="text-xl font-semibold text-earth mt-6">
+                      Where Can We Actually Do This?
+                    </h4>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      A practical look at jurisdictions, land considerations, and what it takes to make intentional communities viable.
+                    </p>
+                  </div>
+                  <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
+                    <img
+                      src="/images/do_groupmeal.jpg"
+                      alt="Elkenmist house and community space"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Section 2: Photo + Copy */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3] order-2 md:order-1">
+                    <img
+                      src="/images/do_garden.jpg"
+                      alt="Sheep and farm life at Elkenmist"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="space-y-4 order-1 md:order-2">
+                    <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                      Hands-On Land & Living Skills
+                    </h3>
+                    <div className="space-y-3 text-lg leading-relaxed text-earth-dark">
+                      <p>Site walks to understand natural systems (water, building materials, land features)</p>
+                      <p>Food sovereignty workshops (gardening, animal processing, mushroom inoculation)</p>
+                      <p>Farm and land-based learning</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3: Copy + Photo */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                      Bridging Tech & Reality
+                    </h3>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Getting technical people grounded in the real, present problems blocking community spaces—because most of the work isn't technological, it's human and cultural.
+                    </p>
+                    <h4 className="text-xl font-semibold text-earth mt-6">
+                      Unpacking Our Assumptions
+                    </h4>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Space to examine what we think we know about collectivism, community-building, and how groups actually function.
+                    </p>
+                  </div>
+                  <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
+                    <img
+                      src="/images/do_lightson.jpg"
+                      alt="Camp and gathering space at Elkenmist"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="mt-8">
-                <Button
-                  size="lg"
-                  className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
-                  asChild
-                >
-                  <a href="/rsvp">Apply to attend</a>
-                </Button>
+
+              <div className="max-w-4xl mx-auto text-center">
+                <div className="mt-16">
+                  <Button
+                    size="lg"
+                    className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
+                    asChild
+                  >
+                    <a href="/rsvp">Apply to attend</a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -425,10 +488,10 @@ export default function TouchGrassPage() {
               <div className="bg-white/95 rounded-lg shadow-sm p-6 md:p-8">
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-lg font-semibold">
+                    <AccordionTrigger className="text-xl font-semibold">
                       What's included?
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-lg leading-relaxed">
                       Each ticket is all-inclusive, covering accommodations,
                       meals, and programming. You can also choose to stay
                       offsite in your own accommodations. The only additional
@@ -436,11 +499,20 @@ export default function TouchGrassPage() {
                     </AccordionContent>
                   </AccordionItem>
 
+                  <AccordionItem value="item-whocomes">
+                    <AccordionTrigger className="text-xl font-semibold">
+                      Who should come?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-lg leading-relaxed">
+                      If you're building, designing, or organizing in crypto/web3 and want to broaden your perspective on the cultural and practical challenges of building regenerative community spaces, <span className="font-bold">// touch grass</span> is for you. You might even be burnt out on crypto, or just looking for real applications of the technology. You're ready to trade Discord for dirt under your fingernails. At least for a few days.
+                    </AccordionContent>
+                  </AccordionItem>
+
                   <AccordionItem value="item-2">
-                    <AccordionTrigger className="text-lg font-semibold">
+                    <AccordionTrigger className="text-xl font-semibold">
                       How do I get there?
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-lg leading-relaxed">
                       The exact venue address will be provided upon
                       registration. The nearest airport is Portland
                       International (PDX, 1.5 hour drive). The nearest train
@@ -453,10 +525,10 @@ export default function TouchGrassPage() {
                   </AccordionItem>
 
                   <AccordionItem value="item-3">
-                    <AccordionTrigger className="text-lg font-semibold">
+                    <AccordionTrigger className="text-xl font-semibold">
                       Can I stay longer?
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-lg leading-relaxed">
                       Yes, you can stay longer! We'll provide a daily pricing
                       option for anyone who wants a longer visit into community
                       living at Elkenmist.
@@ -464,10 +536,10 @@ export default function TouchGrassPage() {
                   </AccordionItem>
 
                   <AccordionItem value="item-4">
-                    <AccordionTrigger className="text-lg font-semibold">
+                    <AccordionTrigger className="text-xl font-semibold">
                       Can I sponsor this event?
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-lg leading-relaxed">
                       <span className="font-bold">// touch grass</span> is primarily a community-focused event, so
                       there won't be any dedicated spaces for sponsors.
                       Nonetheless, if you or your team want to support this
@@ -477,17 +549,14 @@ export default function TouchGrassPage() {
                   </AccordionItem>
 
                   <AccordionItem value="item-5">
-                    <AccordionTrigger className="text-lg font-semibold">
+                    <AccordionTrigger className="text-xl font-semibold">
                       Why is this happening?
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-lg leading-relaxed">
                       <span className="font-bold">// touch grass</span> might have started as a joke between Sara
-                      Bajor and Ron Turetzky, but it's now a real event. We
-                      noticed how much enthusiasm exists in the web3 community
-                      for building blockchain technology that can actually help
-                      people organize, coordinate, and create value together. So
+                      Bajor and Ron Turetzky, but it's now a real event. We both want to see regenerative, land-based communities proliferate, and suspect there are other technologists, organizers, and designers out there who feel the same way. So
                       we created <span className="font-bold">// touch grass</span> to be a space where such
-                      builders can meet each other and collaborate.
+                      people can meet each other and collaborate.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>

@@ -160,7 +160,7 @@ export default function TouchGrassPage() {
           <h1 className="text-4xl md:text-6xl font-bold whitespace-nowrap">
             // touch grass
           </h1>
-          <p className="whitespace-nowrap">april 9-12, 2026 • near portland, OR</p>
+          <p className="whitespace-nowrap">2027 dates TBA • near portland, OR</p>
         </div>
       </div>
 
@@ -225,7 +225,7 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Dates:</span>
                           <br />
-                          April 9-12, 2026
+                          2027 dates TBA.
                         </div>
                       </li>
                       <li className="flex items-start gap-3">

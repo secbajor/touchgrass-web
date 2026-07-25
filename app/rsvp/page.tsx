@@ -61,15 +61,15 @@ export default function RSVPPage() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            apply for{" "}
+            register for{" "}
             <span className="md:hidden">
               <br />
             </span>{" "}
             <span className="font-bold">// touch grass</span>
           </h1>
           <p className="text-xl text-white/90">
-            March 26-29, 2026 • <a href="https://www.elkenmist.com" target="_blank">Elkenmist Farm & Retreat Center</a> <br />{" "}
-            Skamokawa, WA 98647
+            October 18-25, 2026 • Traditional Dream Factory <br /> Alentejo,
+            Portugal
           </p>
         </div>
 
@@ -162,83 +162,64 @@ export default function RSVPPage() {
                 Preferred Accommodation{" "}
                 <span className="text-destructive">*</span>
                 <span className="block text-xs font-normal text-muted-foreground mt-1">
-                  Select all that work for you. Rooms will be assigned on a first come/first served basis. Final pricing is dependent on selected accommodation (camping is cheaper than rooms). Tents are available to borrow.
+                  All meals and programming are included. Cost is determined by
+                  chosen accommodation.
                 </span>
               </label>
               <div className="space-y-3">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="accommodation"
-                    value="mens-shared-room"
+                    value="bring-your-own-tent"
+                    required
                     disabled={formStatus === "submitting"}
-                    className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
-                  />
-                  <span className="text-earth-dark">Men's shared room</span>
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="accommodation"
-                    value="womens-shared-room"
-                    disabled={formStatus === "submitting"}
-                    className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
-                  />
-                  <span className="text-earth-dark">Women's shared room</span>
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="accommodation"
-                    value="camping-private-tent"
-                    disabled={formStatus === "submitting"}
-                    className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
+                    className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
                   <span className="text-earth-dark">
-                    Camping - private tent
+                    Bring your own tent — €500
                   </span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="accommodation"
-                    value="camping-shared-yurt"
+                    value="shared-tent-camping"
+                    required
                     disabled={formStatus === "submitting"}
-                    className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
+                    className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
-                  <span className="text-earth-dark">Camping - shared yurt (mixed gender)</span>
+                  <span className="text-earth-dark">
+                    Shared tent camping (3 people per tent) — €500
+                  </span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="accommodation"
-                    value="offsite"
+                    value="private-tent-single"
+                    required
                     disabled={formStatus === "submitting"}
-                    className="mt-1 w-4 h-4 text-grass border-border rounded focus:ring-grass focus:ring-2"
+                    className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
                   <span className="text-earth-dark">
-                    Offsite (I will find my own accommodations)
+                    Private tent camping, single — €750
+                  </span>
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="accommodation"
+                    value="private-tent-double"
+                    required
+                    disabled={formStatus === "submitting"}
+                    className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                  />
+                  <span className="text-earth-dark">
+                    Private tent camping, double — €1200
                   </span>
                 </label>
               </div>
-            </div>
-
-            {/* Extra Nights */}
-            <div>
-              <label
-                htmlFor="extra-nights"
-                className="block text-sm font-semibold text-earth mb-2"
-              >
-                Do you want to stay any extra nights? Indicate the dates here:
-              </label>
-              <textarea
-                id="extra-nights"
-                name="extra-nights"
-                rows={3}
-                disabled={formStatus === "submitting"}
-                className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
-                placeholder="e.g., March 25 and March 30-31"
-              />
             </div>
 
             {/* Food Allergies */}
@@ -265,8 +246,7 @@ export default function RSVPPage() {
                 htmlFor="web3-projects"
                 className="block text-sm font-semibold text-earth mb-2"
               >
-                What are some projects/communities you're involved in within
-                web3?
+                What are some projects/communities you're involved in?
               </label>
               <textarea
                 id="web3-projects"
@@ -274,7 +254,7 @@ export default function RSVPPage() {
                 rows={4}
                 disabled={formStatus === "submitting"}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
-                placeholder="Tell us about your web3 work"
+                placeholder="Tell us what you're up to"
               />
             </div>
 
@@ -284,7 +264,8 @@ export default function RSVPPage() {
                 htmlFor="hopes"
                 className="block text-sm font-semibold text-earth mb-2"
               >
-                What do you hope for at <span className="font-bold">// touch grass</span>?
+                What do you hope for at{" "}
+                <span className="font-bold">// touch grass</span>?
               </label>
               <textarea
                 id="hopes"
@@ -295,7 +276,6 @@ export default function RSVPPage() {
                 placeholder="Share your intentions and hopes for the experience"
               />
             </div>
-
 
             {/* Anything else */}
             <div>
@@ -316,9 +296,18 @@ export default function RSVPPage() {
             </div>
 
             <div>
-              <p>Once you submit this form, your responses will be reviewed by the event team. We are doing our best to accommodate everyone who is interested, but space is limited so we can only confirm your attendance once payment has been made.</p>
-              <br/>
-              <p className="font-bold">Total cost is estimated to be $300-400 depending on your selected accommodation. We will reach out with financial details and payment options!</p>
+              <p>
+                Once you submit this form, your responses will be reviewed by
+                the event team. We are doing our best to accommodate everyone
+                who is interested, but space is limited so we can only confirm
+                your attendance once payment has been made.
+              </p>
+              <br />
+              <p className="font-bold">
+                Total cost ranges from €500-€1200 depending on your selected
+                accommodation. We will reach out with financial details and
+                payment options!
+              </p>
             </div>
 
             {/* Error Message */}

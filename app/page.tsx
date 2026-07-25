@@ -42,7 +42,7 @@ export default function TouchGrassPage() {
     mounted && typeof window !== "undefined"
       ? Math.min(
           window.innerHeight * 0.15 + scrollY * 0.2,
-          window.innerHeight * 1.1
+          window.innerHeight * 1.1,
         )
       : 0;
   const textOpacity = Math.max(1 - scrollY / 300, 0);
@@ -72,7 +72,8 @@ export default function TouchGrassPage() {
     const buttonEntersScroll = buttonTopAbsolute - viewportHeight;
 
     // Start showing hand at the halfway point between button entering and page bottom
-    const startScroll = buttonEntersScroll + (maxScroll - buttonEntersScroll) / 2;
+    const startScroll =
+      buttonEntersScroll + (maxScroll - buttonEntersScroll) / 2;
 
     // Gap that places hand exactly at the viewport bottom
     const viewportBottomGap = viewportHeight - buttonRect.bottom;
@@ -91,7 +92,7 @@ export default function TouchGrassPage() {
   })();
 
   const handleNewsletterSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
+    e: React.FormEvent<HTMLFormElement>,
   ) => {
     e.preventDefault();
     setFormStatus("submitting");
@@ -160,7 +161,10 @@ export default function TouchGrassPage() {
           <h1 className="text-4xl md:text-6xl font-bold whitespace-nowrap">
             // touch grass
           </h1>
-          <p className="whitespace-nowrap">2027 dates TBA • near portland, OR</p>
+          <p className="whitespace-nowrap">
+            Oct 18-25, 2026 • Alentejo, Portugal <br /> at Traditional Dream
+            Factory
+          </p>
         </div>
       </div>
 
@@ -184,17 +188,19 @@ export default function TouchGrassPage() {
               <h1 className="text-5xl md:text-7xl font-bold text-white text-balance">
                 ghost the group chat.
               </h1>
-            <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
-              <span className="font-bold">// touch grass</span> offers web3 builders a real-world setting to
-              explore applied regenerative web3—together, on a community farm
-              and forest in the pacific northwest.
-            </p>
+              <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
+                <span className="font-bold">// touch grass</span> offers
+                technologists and developers a real-world setting to explore
+                applied regeneration—together, during a week-long residency at
+                Traditional Dream Factory, a regenerative community space in
+                Alentejo, near Lisbon, Portugal.
+              </p>
               <Button
                 size="lg"
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                 asChild
               >
-                <a href="/rsvp">Apply to attend</a>
+                <a href="/rsvp">Register now</a>
               </Button>
             </div>
           </div>
@@ -225,7 +231,7 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Dates:</span>
                           <br />
-                          2027 dates TBA.
+                          October 18-25, 2026 (1 week)
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -233,10 +239,10 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Location:</span>
                           <br />
-                          Elkenmist Farm & Retreat Center
+                          Traditional Dream Factory
                           <br />
                           <span className="text-sm text-muted-foreground">
-                            Private address. Skamokawa, WA 98647
+                            Alentejo, Portugal
                           </span>
                         </div>
                       </li>
@@ -244,7 +250,7 @@ export default function TouchGrassPage() {
                         <span className="text-grass font-bold text-xl">🍛</span>
                         <div>
                           <span className="font-semibold">Meals:</span>
-                          <br />3 farm-fresh meals included daily
+                          <br />3 meals included daily
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -252,10 +258,11 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Cost:</span>
                           <br />
-                          $300-400 per person
+                          €500-€1200 per person
                           <br />
                           <span className="text-sm text-muted-foreground">
-                            (includes meals & accommodations)
+                            (includes meals & accommodations, varies by tent
+                            option)
                           </span>
                         </div>
                       </li>
@@ -277,14 +284,13 @@ export default function TouchGrassPage() {
                       </li>
                     </ul>
                   </div>
-                 
                 </div>
 
                 {/* Right Column - Photos */}
                 <div className="space-y-4">
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
                     <img
-                      src="/images/camp-elkenmist.jpg"
+                      src="/images/tdf-overview.jpg"
                       alt="Event photo 1"
                       className="w-full h-full object-cover"
                     />
@@ -292,14 +298,14 @@ export default function TouchGrassPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-gray-300 rounded-lg overflow-hidden aspect-square">
                       <img
-                        src="/images/house-elkenmist.jpg"
+                        src="/images/tdf-tentbed.jpg"
                         alt="Event photo 2"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="bg-gray-300 rounded-lg overflow-hidden aspect-square">
                       <img
-                        src="/images/sheep-hello.jpg"
+                        src="/images/tdf-hall.webp"
                         alt="Event photo 3"
                         className="w-full h-full object-cover"
                       />
@@ -311,57 +317,41 @@ export default function TouchGrassPage() {
           </div>
         </section>
 
-        {/* Web3 Builders Section */}
+        {/* Land-Based Immersion Section */}
         <section className="bg-grass py-20 md:py-32 relative overflow-hidden">
-          {/* Moss texture overlay */}
+          {/* Land plan background */}
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
+            className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url(/images/moss.jpg)",
-              mixBlendMode: "multiply",
+              backgroundImage: "url(/images/land-plan.png)",
             }}
           />
+          {/* Darkening overlay for text contrast */}
+          <div className="absolute inset-0 bg-earth/60" />
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                {/* Left Column - Copy */}
-                <div className="space-y-6 text-white order-2 md:order-1">
-                  <h3 className="text-3xl md:text-4xl font-bold">
-                    build on the blockchain. build for the land.
-                  </h3>
-                  <p className="text-lg md:text-xl leading-relaxed">
-                    <span className="font-bold">// touch grass</span> is an
-                    invitation to web3 builders determined to apply blockchain
-                    solutions to real world problems. As the spirit of localism
-                    and regeneration finds roots in web3, it's now more
-                    important than ever that we convene, collaborate, and build
-                    with each other.
-                  </p>
+            <div className="max-w-3xl mx-auto bg-grass-dark/40 backdrop-blur-sm rounded-lg p-8 md:p-12 space-y-6 text-white shadow-xl">
+              <h3 className="text-3xl md:text-4xl font-bold">
+                trade your screen for soil.
+              </h3>
+              <p className="text-lg md:text-xl leading-relaxed">
+                <span className="font-bold">// touch grass</span> is an
+                invitation to technologists and developers craving something
+                real. Step away from the screen for a week-long immersion in
+                land-based living, hands-on skill building, and honest
+                conversation about how we build community—together.
+              </p>
 
-                  <p className="text-base md:text-xl leading-relaxed">
-                    With accommodations offered in a group house on over
-                    120-acres in the forests of the Pacific Northwest, you will
-                    join with others over shared meals, dev talks, forest walks,
-                    and farm workshops.
-                  </p>
-                  <p className="text-base md:text-xl leading-relaxed">
-                    <span className="font-bold">// touch grass</span> is a
-                    unique offering that roots blockchain innovation in a real,
-                    land-based context.
-                  </p>
-                </div>
-
-                {/* Right Column - Image */}
-                <div className="order-1 md:order-2">
-                  <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[5/6]">
-                    <img
-                      src="/images/horse_human_mist.jpg"
-                      alt="Pacific Northwest farm"
-                      className="w-full h-full object-top object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
+              <p className="text-base md:text-xl leading-relaxed">
+                With accommodations at Traditional Dream Factory, a regenerative
+                community space in the Alentejo, Portugal, you will join with
+                others over shared meals, skill-shares, nature walks, and farm
+                workshops.
+              </p>
+              <p className="text-base md:text-xl leading-relaxed">
+                <span className="font-bold">// touch grass</span> is a unique
+                offering that roots technical minds in a real, land-based
+                context—for one week at a time.
+              </p>
             </div>
           </div>
         </section>
@@ -386,19 +376,21 @@ export default function TouchGrassPage() {
                       Communal Living: Past & Present
                     </h3>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      How have people organized collective living throughout history, and what can we learn from them?
+                      How have people organized collective living throughout
+                      history, and what can we learn from them?
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
                       Where Can We Actually Do This?
                     </h4>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      A practical look at jurisdictions, land considerations, and what it takes to make intentional communities viable.
+                      A practical look at jurisdictions, land considerations,
+                      and what it takes to make intentional communities viable.
                     </p>
                   </div>
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
                     <img
-                      src="/images/do_groupmeal.jpg"
-                      alt="Elkenmist house and community space"
+                      src="/images/food.jpg"
+                      alt="Traditional Dream Factory community space"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -408,8 +400,8 @@ export default function TouchGrassPage() {
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3] order-2 md:order-1">
                     <img
-                      src="/images/do_garden.jpg"
-                      alt="Sheep and farm life at Elkenmist"
+                      src="/images/sheep.jpg"
+                      alt="Farm life at Traditional Dream Factory"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -418,8 +410,14 @@ export default function TouchGrassPage() {
                       Hands-On Land & Living Skills
                     </h3>
                     <div className="space-y-3 text-lg leading-relaxed text-earth-dark">
-                      <p>Site walks to understand natural systems (water, building materials, land features)</p>
-                      <p>Food sovereignty workshops (gardening, animal processing, mushroom inoculation)</p>
+                      <p>
+                        Site walks to understand natural systems (water,
+                        building materials, land features)
+                      </p>
+                      <p>
+                        Food sovereignty workshops (gardening, animal
+                        processing, mushroom inoculation)
+                      </p>
                       <p>Farm and land-based learning</p>
                     </div>
                   </div>
@@ -432,19 +430,22 @@ export default function TouchGrassPage() {
                       Bridging Tech & Reality
                     </h3>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Getting technical people grounded in the real, present problems blocking community spaces—because most of the work isn't technological, it's human and cultural.
+                      Getting technical people grounded in the real, present
+                      problems blocking community spaces—because most of the
+                      work isn't technological, it's human and cultural.
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
                       Unpacking Our Assumptions
                     </h4>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Space to examine what we think we know about collectivism, community-building, and how groups actually function.
+                      Space to examine what we think we know about collectivism,
+                      community-building, and how groups actually function.
                     </p>
                   </div>
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
                     <img
-                      src="/images/do_lightson.jpg"
-                      alt="Camp and gathering space at Elkenmist"
+                      src="/images/sauna.jpg"
+                      alt="Camp and gathering space at Traditional Dream Factory"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -458,7 +459,7 @@ export default function TouchGrassPage() {
                     className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
                     asChild
                   >
-                    <a href="/rsvp">Apply to attend</a>
+                    <a href="/rsvp">Register now</a>
                   </Button>
                 </div>
               </div>
@@ -493,9 +494,8 @@ export default function TouchGrassPage() {
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
                       Each ticket is all-inclusive, covering accommodations,
-                      meals, and programming. You can also choose to stay
-                      offsite in your own accommodations. The only additional
-                      fee is optional for transport to/from the venue.
+                      meals, and programming. The only additional cost is
+                      getting yourself to the venue!
                     </AccordionContent>
                   </AccordionItem>
 
@@ -504,7 +504,14 @@ export default function TouchGrassPage() {
                       Who should come?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      If you're building, designing, or organizing in crypto/web3 and want to broaden your perspective on the cultural and practical challenges of building regenerative community spaces, <span className="font-bold">// touch grass</span> is for you. You might even be burnt out on crypto, or just looking for real applications of the technology. You're ready to trade Discord for dirt under your fingernails. At least for a few days.
+                      If you're a technologist, developer, or organizer who
+                      wants to broaden your perspective on the cultural and
+                      practical challenges of building regenerative community
+                      spaces, <span className="font-bold">// touch grass</span>{" "}
+                      is for you. You might be burnt out and craving something
+                      real, or just looking for hands-on ways to apply your
+                      skills off-screen. You're ready to trade the group chat
+                      for dirt under your fingernails. At least for a week.
                     </AccordionContent>
                   </AccordionItem>
 
@@ -513,14 +520,14 @@ export default function TouchGrassPage() {
                       How do I get there?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      The exact venue address will be provided upon
-                      registration. The nearest airport is Portland
-                      International (PDX, 1.5 hour drive). The nearest train
-                      station is Amtrak's Kelso station (45 min drive). From
-                      there you can arrange paid transport with our team, or
-                      coordinate a rideshare with other attendees.
+                      Traditional Dream Factory is located in Alentejo,
+                      Portugal. The nearest airport is Lisbon. To arrive by
+                      train, take the Lisbon Sete-Rios to Ermidas-Sado. From
+                      there it is a 10-min drive to TDF and we'll coordinate to
+                      pick you up.
                       <br /> <br />
-                      Note: Uber and Lyft are not available out here!
+                      More detailed travel guidance will be shared closer to the
+                      event.
                     </AccordionContent>
                   </AccordionItem>
 
@@ -529,9 +536,17 @@ export default function TouchGrassPage() {
                       Can I stay longer?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      Yes, you can stay longer! We'll provide a daily pricing
-                      option for anyone who wants a longer visit into community
-                      living at Elkenmist.
+                      Traditional Dream Factory has an incredible season of
+                      events lined up! You might even want to stay for their
+                      Permaculture deep dive which starts right after
+                      <b>// touchgrass</b>. Check their website for more
+                      details:{" "}
+                      <a
+                        href="https://www.traditionaldreamfactory.com/"
+                        target="_blank"
+                      >
+                        https://www.traditionaldreamfactory.com/
+                      </a>
                     </AccordionContent>
                   </AccordionItem>
 
@@ -540,11 +555,11 @@ export default function TouchGrassPage() {
                       Can I sponsor this event?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      <span className="font-bold">// touch grass</span> is primarily a community-focused event, so
-                      there won't be any dedicated spaces for sponsors.
-                      Nonetheless, if you or your team want to support this
-                      event, send us a note at brb@touchgrass.how and we'll be
-                      happy to discuss options.
+                      <span className="font-bold">// touch grass</span> is
+                      primarily a community-focused event, so there won't be any
+                      dedicated spaces for sponsors. Nonetheless, if you or your
+                      team want to support this event, send us a note at
+                      brb@touchgrass.how and we'll be happy to discuss options.
                     </AccordionContent>
                   </AccordionItem>
 
@@ -553,10 +568,15 @@ export default function TouchGrassPage() {
                       Why is this happening?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      <span className="font-bold">// touch grass</span> might have started as a joke between Sara
-                      Bajor and Ron Turetzky, but it's now a real event. We both want to see regenerative, land-based communities proliferate, and suspect there are other technologists, organizers, and designers out there who feel the same way. So
-                      we created <span className="font-bold">// touch grass</span> to be a space where such
-                      people can meet each other and collaborate.
+                      <span className="font-bold">// touch grass</span> might
+                      have started as a joke between Sara Bajor and Ron
+                      Turetzky, but it's now a real event. We both want to see
+                      regenerative, land-based communities proliferate, and
+                      suspect there are other technologists, organizers, and
+                      designers out there who feel the same way. So we created{" "}
+                      <span className="font-bold">// touch grass</span> to be a
+                      space where such people can meet each other and
+                      collaborate.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -620,8 +640,8 @@ export default function TouchGrassPage() {
                         {formStatus === "submitting"
                           ? "Subscribing..."
                           : formStatus === "success"
-                          ? "Subscribed!"
-                          : "Subscribe"}
+                            ? "Subscribed!"
+                            : "Subscribe"}
                       </button>
                     </div>
                     {formStatus === "success" && (
@@ -638,7 +658,10 @@ export default function TouchGrassPage() {
                 </div>
 
                 {/* Right Column - Apply CTA */}
-                <div id="lower-apply-cta" className="bg-grass rounded-lg p-8 md:p-10 text-white text-center space-y-6 relative overflow-visible">
+                <div
+                  id="lower-apply-cta"
+                  className="bg-grass rounded-lg p-8 md:p-10 text-white text-center space-y-6 relative overflow-visible"
+                >
                   {/* Moss texture overlay */}
                   <div className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none" />
                   <div className="relative z-10">
@@ -646,7 +669,8 @@ export default function TouchGrassPage() {
                       Ready to join us?
                     </h3>
                     <p className="text-white/90 mb-6 text-lg">
-                      Applications are now open for <span className="font-bold">// touch grass</span> 2026.
+                      Applications are now open for{" "}
+                      <span className="font-bold">// touch grass</span> 2026.
                       Limited spots available.
                     </p>
                     <div ref={lowerButtonRef} className="relative inline-block">
@@ -655,7 +679,7 @@ export default function TouchGrassPage() {
                         className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                         asChild
                       >
-                        <a href="/rsvp">Apply to attend</a>
+                        <a href="/rsvp">Register now</a>
                       </Button>
                       {/* Hand pointing up at the button */}
                       <div
@@ -680,7 +704,8 @@ export default function TouchGrassPage() {
         <footer className="bg-earth text-white py-12">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm opacity-80">
-              © 2026 <span className="font-bold">// touch grass</span> <br /> it's time to go outside.
+              © 2026 <span className="font-bold">// touch grass</span> <br />{" "}
+              it's time to go outside.
             </p>
           </div>
         </footer>

@@ -382,7 +382,7 @@ export default function TouchGrassPage() {
                 </span>
               </p>
 
-              <p className="text-base md:text-xl leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed">
                 And what works for one community won't necessarily work for the
                 next. Change the land, the weather, the landscape, and you
                 change which solutions actually fit. Building something durable
@@ -392,7 +392,7 @@ export default function TouchGrassPage() {
                   in it, and what dies.
                 </span>
               </p>
-              <p className="text-base md:text-xl leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed">
                 <span className="font-bold">// touch grass</span> is a week of
                 practicing both. We'll get hands-on with software that carries
                 the daily work of a community space: who's cooking, what's
@@ -408,8 +408,136 @@ export default function TouchGrassPage() {
           </div>
         </section>
 
+        {/* Your Hosts Section */}
+        <section className="bg-sand py-20 md:py-32">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center space-y-4 mb-12 md:mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-earth">
+                  your hosts
+                </h2>
+                <div className="w-20 h-1 bg-grass mx-auto" />
+                <p className="text-earth-dark text-lg max-w-2xl mx-auto pt-2">
+                  The people bringing the tools, holding the week, and doing the
+                  dishes alongside you.
+                </p>
+              </div>
+
+              {/* Two featured hosts, alternating 50/50 */}
+              <div className="space-y-10 lg:space-y-14">
+                {/* Host 1: Photo + Bio */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <img
+                    src="/images/sara-host-3.jpeg"
+                    alt="Sara Bee"
+                    className="w-full aspect-[3/2] object-cover"
+                  />
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                        Sara Bee
+                      </h3>
+                      <p className="text-grass font-semibold text-lg">
+                        Co-creator, // touch grass
+                      </p>
+                    </div>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Sara holds the programming on social technology, bringing
+                      practices from Microsolidarity and eight years of living
+                      in and growing community. Her home community is{" "}
+                      <a
+                        href="https://elkenmist.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        Elkenmist
+                      </a>
+                      , a regenerative farm and gathering space in the US
+                      Pacific Northwest. She arrives with a wide toolbox of
+                      practical community skills: group process, grant writing,
+                      accounting, catering, dish washing, and lettuce planting.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Host 2: Bio + Photo */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className="space-y-4 order-2 md:order-1">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                        Ron Turetzky
+                      </h3>
+                      <p className="text-grass font-semibold text-lg">
+                        Co-creator, // touch grass
+                      </p>
+                    </div>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Ron is the author of{" "}
+                      <a
+                        href="https://colive.fun"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        colive.fun
+                      </a>
+                      , a Decentral Park solidarity app for running a co-living
+                      household, and teaches others how to practically form and
+                      sustain industrial agrarian communities through his
+                      course, Commons & Coordination. A technologist and
+                      founding engineer in web3, he builds coordination tools
+                      from inside the practice—as someone who steps into the
+                      actual problems they're meant to solve. Most recently he
+                      coordinated Convent, a coliving lab in NYC.
+                    </p>
+                  </div>
+                  {/* TODO: replace with <img src="/images/host-ron.jpg" alt="Ron Turetzky" className="w-full aspect-[3/2] object-cover" /> */}
+                  <div className="bg-earth/10 aspect-[3/2] flex items-center justify-center order-1 md:order-2">
+                    <span className="text-earth/40 text-sm">photo</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional hosts, 3 columns */}
+              <div className="mt-16 md:mt-24">
+                <h3 className="text-2xl md:text-3xl font-bold text-earth text-center mb-10">
+                  Joining us on the land
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                  {guestHosts.map((host) => (
+                    <div key={host.id} className="space-y-4">
+                      {host.image ? (
+                        <img
+                          src={host.image}
+                          alt={host.name}
+                          className="w-full aspect-square object-cover rounded-lg"
+                        />
+                      ) : (
+                        <div className="bg-earth/10 rounded-lg aspect-square flex items-center justify-center">
+                          <span className="text-earth/40 text-sm">photo</span>
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-xl font-bold text-earth">
+                          {host.name}
+                        </h4>
+                        <p className="text-grass font-semibold">{host.role}</p>
+                      </div>
+                      <p className="text-base leading-relaxed text-earth-dark">
+                        {host.bio}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {/* What We'll Explore Section */}
-        <section className="py-20 md:py-32 bg-sand">
+        <section className="py-20 md:py-32 bg-sand border-t border-earth/10">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center space-y-4 mb-12">
@@ -641,133 +769,6 @@ export default function TouchGrassPage() {
                 using these tools together goes back into them—and out to the
                 communities they're for.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Your Hosts Section */}
-        <section className="bg-sand py-20 md:py-32">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center space-y-4 mb-12 md:mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-earth">
-                  your hosts
-                </h2>
-                <div className="w-20 h-1 bg-grass mx-auto" />
-                <p className="text-earth-dark text-lg max-w-2xl mx-auto pt-2">
-                  The people bringing the tools, holding the week, and doing the
-                  dishes alongside you.
-                </p>
-              </div>
-
-              {/* Two featured hosts, alternating 50/50 */}
-              <div className="space-y-10 lg:space-y-14">
-                {/* Host 1: Photo + Bio */}
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  <img
-                    src="/images/sara-host-3.jpeg"
-                    alt="Sara Bee"
-                    className="w-full aspect-[3/2] object-cover"
-                  />
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
-                        Sara Bee
-                      </h3>
-                      <p className="text-grass font-semibold text-lg">
-                        Co-creator, // touch grass
-                      </p>
-                    </div>
-                    <p className="text-lg leading-relaxed text-earth-dark">
-                      Sara holds the programming on social technology, bringing
-                      practices from Microsolidarity and eight years of living
-                      in and growing community. Her home community is{" "}
-                      <a
-                        href="https://elkenmist.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
-                      >
-                        Elkenmist
-                      </a>
-                      , a regenerative farm and gathering space in the US
-                      Pacific Northwest. She arrives with a wide toolbox of
-                      practical community skills: group process, grant writing,
-                      accounting, catering, dish washing, and lettuce planting.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Host 2: Bio + Photo */}
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  <div className="space-y-4 order-2 md:order-1">
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
-                        Ron Turetzky
-                      </h3>
-                      <p className="text-grass font-semibold text-lg">
-                        Co-creator, // touch grass
-                      </p>
-                    </div>
-                    <p className="text-lg leading-relaxed text-earth-dark">
-                      Ron is the author of{" "}
-                      <a
-                        href="https://colive.fun"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
-                      >
-                        colive.fun
-                      </a>
-                      , a Decentral Park solidarity app for running a co-living
-                      household, and teaches others how to practically form and
-                      sustain industrial agrarian communities through his
-                      course, Commons & Coordination. A technologist and
-                      founding engineer in web3, he builds coordination tools
-                      from inside the practice—as someone who steps into the
-                      actual problems they're meant to solve. Most recently he
-                      coordinated Convent, a coliving lab in NYC.
-                    </p>
-                  </div>
-                  {/* TODO: replace with <img src="/images/host-ron.jpg" alt="Ron Turetzky" className="w-full aspect-[3/2] object-cover" /> */}
-                  <div className="bg-earth/10 aspect-[3/2] flex items-center justify-center order-1 md:order-2">
-                    <span className="text-earth/40 text-sm">photo</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional hosts, 3 columns */}
-              <div className="mt-16 md:mt-24">
-                <h3 className="text-2xl md:text-3xl font-bold text-earth text-center mb-10">
-                  Joining us on the land
-                </h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                  {guestHosts.map((host) => (
-                    <div key={host.id} className="space-y-4">
-                      {host.image ? (
-                        <img
-                          src={host.image}
-                          alt={host.name}
-                          className="w-full aspect-square object-cover rounded-lg"
-                        />
-                      ) : (
-                        <div className="bg-earth/10 rounded-lg aspect-square flex items-center justify-center">
-                          <span className="text-earth/40 text-sm">photo</span>
-                        </div>
-                      )}
-                      <div>
-                        <h4 className="text-xl font-bold text-earth">
-                          {host.name}
-                        </h4>
-                        <p className="text-grass font-semibold">{host.role}</p>
-                      </div>
-                      <p className="text-base leading-relaxed text-earth-dark">
-                        {host.bio}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </section>

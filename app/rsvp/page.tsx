@@ -71,6 +71,10 @@ export default function RSVPPage() {
             October 18-25, 2026 • Traditional Dream Factory <br /> Alentejo,
             Portugal
           </p>
+          <p className="text-lg text-white/75 mt-4 max-w-xl mx-auto">
+            A week of hands-on practice with the tools—social and software—that
+            land-based communities run on.
+          </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-xl p-6 md:p-10">
@@ -255,6 +259,29 @@ export default function RSVPPage() {
                 disabled={formStatus === "submitting"}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
                 placeholder="Tell us what you're up to"
+              />
+            </div>
+
+            {/* What you'd build */}
+            <div>
+              <label
+                htmlFor="build-focus"
+                className="block text-sm font-semibold text-earth mb-2"
+              >
+                What are you most curious to try?
+                <span className="block text-xs font-normal text-muted-foreground mt-1">
+                  Governance, treasuries, rosters and coordination tools, land
+                  and legal structures, facilitation, food systems, or something
+                  we haven't thought of. Tell us what you'd bring, too.
+                </span>
+              </label>
+              <textarea
+                id="build-focus"
+                name="build-focus"
+                rows={4}
+                disabled={formStatus === "submitting"}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
+                placeholder="What you'd like to get your hands on, and the skills you're bringing"
               />
             </div>
 

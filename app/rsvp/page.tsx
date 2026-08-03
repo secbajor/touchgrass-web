@@ -68,8 +68,24 @@ export default function RSVPPage() {
             <span className="font-bold">// touch grass</span>
           </h1>
           <p className="text-xl text-white/90">
-            October 18-25, 2026 • Traditional Dream Factory <br /> Alentejo,
-            Portugal
+            October 18-25, 2026 •{" "}
+            <a
+              href="https://www.traditionaldreamfactory.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-white/50 hover:text-white transition-colors"
+            >
+              Traditional Dream Factory
+            </a>{" "}
+            <br />{" "}
+            <a
+              href="https://www.google.com/maps/place/Traditional+Dream+Factory/@38.0025485,-8.5638367,15.13z/data=!4m6!3m5!1s0xd1bb5a9aebf4183:0x70f027ce7d295aae!8m2!3d38.0030065!4d-8.5590876!16s%2Fg%2F11r36h93f4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-white/50 hover:text-white transition-colors"
+            >
+              Alentejo, Portugal
+            </a>
           </p>
           <p className="text-lg text-white/75 mt-4 max-w-xl mx-auto">
             A week of hands-on practice with the tools—social and software—that

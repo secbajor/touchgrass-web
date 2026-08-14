@@ -42,7 +42,7 @@ const guestHosts: Host[] = [
     name: "Tonya",
     role: "Traditional Dream Factory Host",
     bio: "Our host on the ground, Tonya knows where things are, how the site actually works, and the rhythms of TDF so we can arrive comfortably to our community-for-a-week.",
-    image: "",
+    image: "/images/tonya-host.jpg",
   },
   {
     id: "host-3",
@@ -641,7 +641,7 @@ export default function TouchGrassPage() {
                       History as a teacher
                     </h4>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Commons, co-ops, and kibbutzim have been testing
+                      Commons, co-ops, and communes have been testing
                       alternative living styles for centuries and hold deep
                       knowledge for how to live in community for the long haul.
                       We'll study the record, then use speculative fiction to

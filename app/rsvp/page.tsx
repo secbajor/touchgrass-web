@@ -3,10 +3,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+const PAYMENT_URLS: Record<string, string> = {
+  "bring-your-own-tent": "https://buy.stripe.com/eVq00lfr7df9d5R9Pvebu01",
+  "shared-tent-camping": "https://buy.stripe.com/cNi6oJa6N1wrgi31iZebu00",
+  "private-tent-single": "https://buy.stripe.com/cNi8wR5Qx5MH4zlf9Pebu02",
+  "private-tent-double": "https://buy.stripe.com/bJe9AVdiZejdfdZd1Hebu03",
+};
+
 export default function RSVPPage() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,8 +31,19 @@ export default function RSVPPage() {
       });
 
       if (response.ok) {
+        const accommodation = formData.get("accommodation");
+        const url =
+          typeof accommodation === "string"
+            ? PAYMENT_URLS[accommodation]
+            : undefined;
+
+        setPaymentUrl(url ?? null);
         setFormStatus("success");
         form.reset();
+
+        if (url) {
+          window.location.href = url;
+        }
       } else {
         setFormStatus("error");
       }
@@ -41,16 +60,26 @@ export default function RSVPPage() {
             Thank you!
           </h1>
           <p className="text-xl text-earth-dark mb-6">
-            Your responses have been received. We'll be in touch soon with more
-            details.
+            {paymentUrl
+              ? "Your responses have been received. Taking you to payment now — your spot is confirmed once payment is complete."
+              : "Your responses have been received. We'll be in touch soon with payment details."}
           </p>
           <Button
             size="lg"
             className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
             asChild
           >
-            <a href="/">Return to Home</a>
+            {paymentUrl ? (
+              <a href={paymentUrl}>Continue to payment</a>
+            ) : (
+              <a href="/">Return to Home</a>
+            )}
           </Button>
+          {paymentUrl && (
+            <p className="text-sm text-muted-foreground mt-4">
+              Not redirected automatically? Use the button above.
+            </p>
+          )}
         </div>
       </div>
     );
@@ -348,8 +377,8 @@ export default function RSVPPage() {
               <br />
               <p className="font-bold">
                 Total cost ranges from €500-€1200 depending on your selected
-                accommodation. We will reach out with financial details and
-                payment options!
+                accommodation. After you submit, you'll be taken straight to
+                payment.
               </p>
             </div>
 

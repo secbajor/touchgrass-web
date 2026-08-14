@@ -233,23 +233,44 @@ export default function TouchGrassPage() {
                 the commons needs a tech stack.
               </h1>
               <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
-                But half the stack isn't software.
-                <br />
-                <span className="font-bold"> // touch grass</span> is a week of
-                exploring social technology and open software that can turn a
-                homestead into a buzzing regenerative community. We're bringing
-                tools that land-based communities can actually use, and
-                experimenting with them at{" "}
-                <a
-                  href={TDF_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkOnDark}
-                >
-                  Traditional Dream Factory
-                </a>
-                , a real and growing community in Portugal.
+                Are you a community-forward technologist, or a technology-forward
+                communitarian?
               </p>
+              <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
+                <span className="font-bold"> // touch grass</span> is a week of
+                putting both to work. We bring three things:
+              </p>
+              <ul className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto space-y-3 text-left">
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">01</span>
+                  <span>
+                    a stack of tools for actually running a community, from
+                    rosters and money to an AI assistant;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">02</span>
+                  <span>
+                    a real look at the jurisdictions and communities already
+                    doing it, and what it takes to start your own;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">03</span>
+                  <span>
+                    and a week on the ground at{" "}
+                    <a
+                      href={TDF_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkOnDark}
+                    >
+                      Traditional Dream Factory
+                    </a>
+                    , a real and growing community in Portugal.
+                  </span>
+                </li>
+              </ul>
               <Button
                 size="lg"
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
@@ -503,7 +524,17 @@ export default function TouchGrassPage() {
                       </p>
                     </div>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Ron is the author of{" "}
+                      Ron is a co-founder of{" "}
+                      <a
+                        href="https://bread.coop"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        Bread Cooperative
+                      </a>{" "}
+                      and of a co-living community by Central Park, and the
+                      author of{" "}
                       <a
                         href="https://colive.fun"
                         target="_blank"
@@ -512,14 +543,13 @@ export default function TouchGrassPage() {
                       >
                         colive.fun
                       </a>
-                      , a Decentral Park solidarity app for running a co-living
-                      household, and teaches others how to practically form and
-                      sustain industrial agrarian communities through his
-                      course, Commons & Coordination. A technologist and
-                      founding engineer in web3, he builds coordination tools
-                      from inside the practice—as someone who steps into the
-                      actual problems they're meant to solve. Most recently he
-                      coordinated Convent, a coliving lab in NYC.
+                      , a solidarity app for running a co-living household. He
+                      runs a co-living lab in New York, teaches an industrial
+                      agrarian course on how to practically form and sustain
+                      communities, and has lived in both urban and rural
+                      communes. A founding engineer in web3, he builds
+                      coordination tools from inside the practice—as someone who
+                      steps into the actual problems they're meant to solve.
                     </p>
                   </div>
                   {/* TODO: replace with <img src="/images/host-ron.jpg" alt="Ron Turetzky" className="w-full aspect-[3/2] object-cover" /> */}
@@ -646,7 +676,7 @@ export default function TouchGrassPage() {
                       community is the opposite: software that carries the facts
                       so nobody has to hold them all. Tools that can manage
                       rosters, know who's cooking, and what got decided. We'll
-                      get hands-on with{" "}
+                      get hands-on with the full stack—{" "}
                       <a
                         href="https://colive.fun"
                         target="_blank"
@@ -655,9 +685,9 @@ export default function TouchGrassPage() {
                       >
                         colive.fun
                       </a>
-                      , AI-assisted admin, and financial tools that help a group
-                      hold its own money, land, and future without asking an
-                      institution for permission.
+                      , an AI assistant for the daily admin, and financial tools
+                      that help a group hold its own money, land, and future
+                      without asking an institution for permission.
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
                       What Isn't Built Yet
@@ -684,6 +714,17 @@ export default function TouchGrassPage() {
                       with our hosts to learn the farm and the ways of the
                       place. Our venue will not be scenery, but a real working
                       aspect of our week together.
+                    </p>
+                    <h4 className="text-xl font-semibold text-earth mt-6">
+                      Where you can actually do this
+                    </h4>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Wanting a community is one thing; siting one is another.
+                      We'll get practical about jurisdictions and feasibility—
+                      what different places make possible, the requirements and
+                      considerations behind them, and the real communities
+                      already living it—so you leave with a sense of where and
+                      how you could start your own.
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
                       Intentional Connection

@@ -283,10 +283,6 @@ export default function RSVPPage() {
                 <label className="block text-sm font-semibold text-earth mb-3">
                   Tent gender preference{" "}
                   <span className="text-destructive">*</span>
-                  <span className="block text-xs font-normal text-muted-foreground mt-1">
-                    You'll be sharing with two others. We'll do our best to
-                    accommodate, but can't guarantee it.
-                  </span>
                 </label>
                 <div className="space-y-3">
                   <label className="flex items-start gap-3 cursor-pointer">

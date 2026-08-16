@@ -15,6 +15,7 @@ export default function RSVPPage() {
     "idle" | "submitting" | "success" | "error"
   >("idle");
   const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
+  const [selectedAccommodation, setSelectedAccommodation] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ export default function RSVPPage() {
         setPaymentUrl(url ?? null);
         setFormStatus("success");
         form.reset();
+        setSelectedAccommodation("");
 
         if (url) {
           window.location.href = url;
@@ -222,6 +224,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="bring-your-own-tent"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -235,6 +238,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="shared-tent-camping"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -248,6 +252,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="private-tent-single"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -261,6 +266,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="private-tent-double"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -270,6 +276,55 @@ export default function RSVPPage() {
                 </label>
               </div>
             </div>
+
+            {/* Tent Gender Preference — only relevant when sharing a tent */}
+            {selectedAccommodation === "shared-tent-camping" && (
+              <div>
+                <label className="block text-sm font-semibold text-earth mb-3">
+                  Tent gender preference{" "}
+                  <span className="text-destructive">*</span>
+                  <span className="block text-xs font-normal text-muted-foreground mt-1">
+                    You'll be sharing with two others. We'll do our best to
+                    accommodate, but can't guarantee it.
+                  </span>
+                </label>
+                <div className="space-y-3">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="male"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">Male</span>
+                  </label>
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="female"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">Female</span>
+                  </label>
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="no-preference"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">No preference</span>
+                  </label>
+                </div>
+              </div>
+            )}
 
             {/* Food Allergies */}
             <div>

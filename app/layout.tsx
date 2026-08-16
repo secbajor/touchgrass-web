@@ -15,9 +15,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "// touch grass - the tech stack for land-based communities",
+  title: "// touch grass - learning the tools for living together",
   description:
-    "A week of hands-on practice with the tools land-based communities run on: web3 financial primitives, community task rosters, and the social protocols underneath both. Alongside farm work, wilderness, and shared meals at Traditional Dream Factory, Alentejo, Portugal. Oct 18-25, 2026.",
+    "A week of practice for technologists and community builders at a working farm in Alentejo, Portugal: the software, the agreements, and the ground underneath. Oct 18-25, 2026.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [

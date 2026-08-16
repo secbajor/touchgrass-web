@@ -32,7 +32,7 @@ type Host = {
 const guestHosts: Host[] = [
   {
     id: "host-1",
-    name: "Josh Glass",
+    name: "Joshua Glass",
     role: "Wilderness Immersion Guide",
     bio: "A facilitator and guide for Deep Nature Connection, Josh will lead our group in an immersive and practical experience of connecting to the natural landscape of Alentejo.",
     image: "/images/josh-host.avif",
@@ -821,7 +821,7 @@ export default function TouchGrassPage() {
                   </h3>
                   <p className="text-white/85 text-lg leading-relaxed">
                     One day out of it entirely: a guided experience with
-                    facilitator Josh Glass. You come back with a different set
+                    facilitator Joshua Glass. You come back with a different set
                     of priorities.
                   </p>
                 </div>

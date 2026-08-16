@@ -9,6 +9,50 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const TDF_URL = "https://www.traditionaldreamfactory.com/";
+const MAP_URL =
+  "https://www.google.com/maps/place/Traditional+Dream+Factory/@38.0025485,-8.5638367,15.13z/data=!4m6!3m5!1s0xd1bb5a9aebf4183:0x70f027ce7d295aae!8m2!3d38.0030065!4d-8.5590876!16s%2Fg%2F11r36h93f4";
+
+/** Link styling for light text on the dark/grass backgrounds. */
+const linkOnDark =
+  "underline underline-offset-2 decoration-white/50 hover:text-white transition-colors";
+/** Link styling for dark text on the sand/white backgrounds. */
+const linkOnLight =
+  "text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors";
+
+type Host = {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  /** Path under /public, e.g. "/images/host-jane.jpg". Empty shows a placeholder. */
+  image: string;
+};
+
+const guestHosts: Host[] = [
+  {
+    id: "host-1",
+    name: "Joshua Glass",
+    role: "Wilderness Immersion Guide",
+    bio: "A facilitator and guide for Deep Nature Connection, Josh will lead our group in an immersive and practical experience of connecting to the natural landscape of Alentejo.",
+    image: "/images/josh-host.avif",
+  },
+  {
+    id: "host-2",
+    name: "Tonya",
+    role: "Traditional Dream Factory Host",
+    bio: "Our host on the ground, Tonya knows where things are, how the site actually works, and the rhythms of TDF so we can arrive comfortably to our community-for-a-week.",
+    image: "/images/tonya-host.jpg",
+  },
+  {
+    id: "host-3",
+    name: "^ These cuties",
+    role: "",
+    bio: 'To borrow a phrase from David Abram, we will bring into our temporary community a recognition of the "more than human" animals and plants (and spirits!?) that live at TDF.',
+    image: "/images/sheep-2.jpg",
+  },
+];
+
 export default function TouchGrassPage() {
   const [scrollY, setScrollY] = useState(0);
   const [hasScrolledPast, setHasScrolledPast] = useState(false);
@@ -184,17 +228,50 @@ export default function TouchGrassPage() {
             }}
           />
           <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="max-w-4xl mx-auto space-y-8">
+            <div className="max-w-6xl mx-auto space-y-8">
               <h1 className="text-5xl md:text-7xl font-bold text-white text-balance">
-                ghost the group chat.
+                The tools for living together can't be learned apart.
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
-                <span className="font-bold">// touch grass</span> offers
-                technologists and developers a real-world setting to explore
-                applied regeneration—together, during a week-long residency at
-                Traditional Dream Factory, a regenerative community space in
-                Alentejo, near Lisbon, Portugal.
+              <p className="text-xl max-w-4xl mx-auto md:text-2xl text-white/90 text-pretty leading-relaxed">
+                So we're spending a week on a working farm in Alentejo, Portugal
+                — gathering technologists and community builders around the same
+                table.
               </p>
+              <p className="text-xl md:text-2xl text-white/90 text-pretty leading-relaxed">
+                <span className="font-bold">// touch grass</span> brings three
+                things:
+              </p>
+              <ul className="text-lg md:text-xl text-white/90 text-pretty leading-relaxed max-w-2xl mx-auto space-y-3 text-left">
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">01</span>
+                  <span>
+                    a stack of tools for actually running a community, from
+                    rosters and money to an AI assistant;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">02</span>
+                  <span>
+                    a real look at the jurisdictions and communities already
+                    doing it, and what it takes to start your own;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="font-bold text-white">03</span>
+                  <span>
+                    and a week on the ground at{" "}
+                    <a
+                      href={TDF_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkOnDark}
+                    >
+                      Traditional Dream Factory
+                    </a>
+                    , a real and growing community in Portugal.
+                  </span>
+                </li>
+              </ul>
               <Button
                 size="lg"
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
@@ -239,18 +316,30 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Location:</span>
                           <br />
-                          Traditional Dream Factory
+                          <a
+                            href={TDF_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={linkOnLight}
+                          >
+                            Traditional Dream Factory
+                          </a>
                           <br />
-                          <span className="text-sm text-muted-foreground">
+                          <a
+                            href={MAP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`text-sm ${linkOnLight}`}
+                          >
                             Alentejo, Portugal
-                          </span>
+                          </a>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-grass font-bold text-xl">🍛</span>
                         <div>
                           <span className="font-semibold">Meals:</span>
-                          <br />3 meals included daily
+                          <br />3 vegetarian meals included daily
                         </div>
                       </li>
                       <li className="flex items-start gap-3">
@@ -261,8 +350,7 @@ export default function TouchGrassPage() {
                           €500-€1200 per person
                           <br />
                           <span className="text-sm text-muted-foreground">
-                            (includes meals & accommodations, varies by tent
-                            option)
+                            (includes meals & varies by tent option)
                           </span>
                         </div>
                       </li>
@@ -279,7 +367,8 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">What to Bring:</span>
                           <br />
-                          Sturdy shoes, rain jacket, water bottle, hat
+                          Sturdy shoes, rain jacket, water bottle, hat, and your
+                          laptop
                         </div>
                       </li>
                     </ul>
@@ -331,27 +420,182 @@ export default function TouchGrassPage() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto bg-grass-dark/40 backdrop-blur-sm rounded-lg p-8 md:p-12 space-y-6 text-white shadow-xl">
               <h3 className="text-3xl md:text-4xl font-bold">
-                trade your screen for soil.
+                // touch grass is a week of practice.
               </h3>
               <p className="text-lg md:text-xl leading-relaxed">
-                <span className="font-bold">// touch grass</span> is an
-                invitation to technologists and developers craving something
-                real. Step away from the screen for a week-long immersion in
-                land-based living, hands-on skill building, and honest
-                conversation about how we build community—together.
+                We're not just talking about community — we're getting practice
+                at running one. <span className="font-bold">// touchgrass</span>{" "}
+                gets hands on with software that can carry the daily work: who's
+                cooking, what got decided, where the money goes.
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed">
+                The necessary technology isn't just digital, it's also social.
+                Most communities don't fail for lack of money or infrastructure.{" "}
+                <span className="font-bold">
+                  They fail at the social layer — and that's the layer you can
+                  only practice with other people.
+                </span>
               </p>
 
-              <p className="text-base md:text-xl leading-relaxed">
-                With accommodations at Traditional Dream Factory, a regenerative
-                community space in the Alentejo, Portugal, you will join with
-                others over shared meals, skill-shares, nature walks, and farm
-                workshops.
+              <p className="text-lg md:text-xl leading-relaxed">
+                We gather to practice somewhere real. A working farm in Alentejo
+                with its own weather, water, neighbors, and constraints — and
+                for one week you're inside it, not reading about it.{" "}
+                <span className="font-bold">
+                  You leave with the tools in your hands, a clear read on the
+                  communities and jurisdictions already doing this, and the
+                  people you practiced alongside.{" "}
+                </span>
               </p>
-              <p className="text-base md:text-xl leading-relaxed">
-                <span className="font-bold">// touch grass</span> is a unique
-                offering that roots technical minds in a real, land-based
-                context—for one week at a time.
-              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Your Hosts Section */}
+        <section className="bg-sand py-20 md:py-32">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center space-y-4 mb-12 md:mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-earth">
+                  your hosts
+                </h2>
+                <div className="w-20 h-1 bg-grass mx-auto" />
+                <p className="text-earth-dark text-lg max-w-2xl mx-auto pt-2">
+                  The people bringing the tools, holding the week, and doing the
+                  dishes alongside you.
+                </p>
+              </div>
+
+              {/* Two featured hosts, alternating 50/50 */}
+              <div className="space-y-10 lg:space-y-14">
+                {/* Host 1: Photo + Bio */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <img
+                    src="/images/sara-host-3.jpeg"
+                    alt="Sara Bee"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                        Sara Bee
+                      </h3>
+                      <p className="text-grass font-semibold text-lg">
+                        Co-creator, // touch grass
+                      </p>
+                    </div>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Sara holds the programming on social technology, bringing
+                      practices from Microsolidarity and eight years of living
+                      in and growing community. Her home community is{" "}
+                      <a
+                        href="https://elkenmist.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        Elkenmist
+                      </a>
+                      , a regenerative farm and gathering space in the US
+                      Pacific Northwest. She arrives with a wide toolbox of
+                      practical community skills: group process, grant writing,
+                      accounting, catering, dish washing, and lettuce planting.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Host 2: Bio + Photo */}
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className="space-y-4 order-2 md:order-1">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-earth">
+                        Ron Turetzky
+                      </h3>
+                      <p className="text-grass font-semibold text-lg">
+                        Co-creator, // touch grass
+                      </p>
+                    </div>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Ron is a co-founder of{" "}
+                      <a
+                        href="https://bread.coop"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        Bread Cooperative
+                      </a>{" "}
+                      and of a co-living community by Central Park, and the
+                      author of{" "}
+                      <a
+                        href="https://colive.fun"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-grass hover:text-grass-dark font-semibold underline underline-offset-2 transition-colors"
+                      >
+                        colive.fun
+                      </a>
+                      , a solidarity app for running a co-living household. He
+                      runs a co-living lab in New York, teaches an industrial
+                      agrarian course on how to practically form and sustain
+                      communities, and has lived in both urban and rural
+                      communes. A founding engineer in web3, he builds
+                      coordination tools from inside the practice—as someone who
+                      steps into the actual problems they're meant to solve.
+                    </p>
+                  </div>
+                  <img
+                    src="/images/ron.jpg"
+                    alt="Ron"
+                    className="w-full aspect-[4/3] object-cover order-1 md:order-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Joining Us On The Land Section */}
+        <section className="bg-grass py-20 md:py-32 relative overflow-hidden">
+          {/* Moss texture overlay */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
+            style={{
+              backgroundImage: "url(/images/moss.jpg)",
+              mixBlendMode: "multiply",
+            }}
+          />
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-10 md:mb-12">
+                Joining us on the land
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                {guestHosts.map((host) => (
+                  <div key={host.id} className="space-y-4">
+                    {host.image ? (
+                      <img
+                        src={host.image}
+                        alt={host.name}
+                        className="w-full aspect-square object-cover rounded-lg"
+                      />
+                    ) : (
+                      <div className="bg-white/10 rounded-lg aspect-square flex items-center justify-center">
+                        <span className="text-white/50 text-sm">photo</span>
+                      </div>
+                    )}
+                    <div>
+                      <h4 className="text-xl font-bold text-white">
+                        {host.name}
+                      </h4>
+                      <p className="text-white/70 font-semibold">{host.role}</p>
+                    </div>
+                    <p className="text-base leading-relaxed text-white/85">
+                      {host.bio}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -362,9 +606,13 @@ export default function TouchGrassPage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center space-y-4 mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-earth">
-                  what we'll explore
+                  what we'll practice
                 </h2>
                 <div className="w-20 h-1 bg-grass mx-auto" />
+                <p className="text-earth-dark text-lg max-w-2xl mx-auto pt-2">
+                  Three threads, running all week, with experienced
+                  practitioners to learn them from.
+                </p>
               </div>
 
               {/* Alternating Layout */}
@@ -373,18 +621,25 @@ export default function TouchGrassPage() {
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div className="space-y-4">
                     <h3 className="text-2xl md:text-3xl font-bold text-earth">
-                      Communal Living: Past & Present
+                      Social Technology
                     </h3>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      How have people organized collective living throughout
-                      history, and what can we learn from them?
+                      We'll practice the skills a group actually runs on: making
+                      decisions, moving through conflict, saying the hard thing,
+                      passing on what we know. We'll work with techniques from
+                      Microsolidarity and Authentic Relating, practiced with
+                      each other rather than studied in theory.
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
-                      Where Can We Actually Do This?
+                      History as a teacher
                     </h4>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      A practical look at jurisdictions, land considerations,
-                      and what it takes to make intentional communities viable.
+                      Commons, co-ops, and communes have been testing
+                      alternative living styles for centuries and hold deep
+                      knowledge for how to live in community for the long haul.
+                      We'll study the record, then use speculative fiction to
+                      write forward from it, turning what they learned into
+                      futures worth building.
                     </p>
                   </div>
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
@@ -401,25 +656,41 @@ export default function TouchGrassPage() {
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3] order-2 md:order-1">
                     <img
                       src="/images/sheep.jpg"
-                      alt="Farm life at Traditional Dream Factory"
+                      alt="Livestock and land at Traditional Dream Factory"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="space-y-4 order-1 md:order-2">
                     <h3 className="text-2xl md:text-3xl font-bold text-earth">
-                      Hands-On Land & Living Skills
+                      Software That Serves the Group
                     </h3>
-                    <div className="space-y-3 text-lg leading-relaxed text-earth-dark">
-                      <p>
-                        Site walks to understand natural systems (water,
-                        building materials, land features)
-                      </p>
-                      <p>
-                        Food sovereignty workshops (gardening, animal
-                        processing, mushroom inoculation)
-                      </p>
-                      <p>Farm and land-based learning</p>
-                    </div>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Most software is built to capture attention. What a
+                      community is the opposite: software that carries the facts
+                      so nobody has to hold them all. Tools that can manage
+                      rosters, know who's cooking, and what got decided. We'll
+                      get hands-on with the full stack—{" "}
+                      <a
+                        href="https://colive.fun"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkOnLight}
+                      >
+                        colive.fun
+                      </a>
+                      , an AI assistant for the daily admin, and financial tools
+                      that help a group hold its own money, land, and future
+                      without asking an institution for permission.
+                    </p>
+                    <h4 className="text-xl font-semibold text-earth mt-6">
+                      What Isn't Built Yet
+                    </h4>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      Buying a house with four friends is still harder than
+                      buying one alone. We'll consider systems that value both
+                      labor and financial contributions, so that ownership
+                      doesn't have to be denied to those without capital.
+                    </p>
                   </div>
                 </div>
 
@@ -427,19 +698,35 @@ export default function TouchGrassPage() {
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div className="space-y-4">
                     <h3 className="text-2xl md:text-3xl font-bold text-earth">
-                      Bridging Tech & Reality
+                      Landscape as Teacher
                     </h3>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Getting technical people grounded in the real, present
-                      problems blocking community spaces—because most of the
-                      work isn't technological, it's human and cultural.
+                      Every community is shaped by the ground it stands on: what
+                      the water does, what the soil will grow, what the summer
+                      demands. We'll learn this one by walking the site, working
+                      with our hosts to learn the farm and the ways of the
+                      place. Our venue will not be scenery, but a real working
+                      aspect of our week together.
                     </p>
                     <h4 className="text-xl font-semibold text-earth mt-6">
-                      Unpacking Our Assumptions
+                      Where you can actually do this
                     </h4>
                     <p className="text-lg leading-relaxed text-earth-dark">
-                      Space to examine what we think we know about collectivism,
-                      community-building, and how groups actually function.
+                      Wanting a community is one thing; siting one is another.
+                      We'll get practical about jurisdictions and feasibility—
+                      what different places make possible, the requirements and
+                      considerations behind them, and the real communities
+                      already living it—so you leave with a sense of where and
+                      how you could start your own.
+                    </p>
+                    <h4 className="text-xl font-semibold text-earth mt-6">
+                      Intentional Connection
+                    </h4>
+                    <p className="text-lg leading-relaxed text-earth-dark">
+                      We'll cook and eat together, sit long after dinner, sweat
+                      in the sauna, and leave whole hours unscheduled. Nothing
+                      will be rushed here, and space will be made for the
+                      emergent.
                     </p>
                   </div>
                   <div className="bg-gray-300 rounded-lg overflow-hidden aspect-[4/3]">
@@ -463,6 +750,88 @@ export default function TouchGrassPage() {
                   </Button>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rhythm of the Week Section */}
+        <section className="bg-earth py-20 md:py-32 relative overflow-hidden">
+          {/* Moss texture overlay */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+            style={{
+              backgroundImage: "url(/images/moss.jpg)",
+              mixBlendMode: "overlay",
+            }}
+          />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-5xl mx-auto space-y-12">
+              <div className="text-center space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  the rhythm of the week
+                </h2>
+                <div className="w-20 h-1 bg-grass mx-auto" />
+                <p className="text-white/80 text-lg max-w-2xl mx-auto pt-2">
+                  Seven days, structured loosely enough to let something
+                  unplanned happen.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 space-y-3">
+                  <span className="text-3xl">🌅</span>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Mornings on the land
+                  </h3>
+                  <p className="text-white/85 text-lg leading-relaxed">
+                    Movement, outdoors, and breakfast. A check in with the farm
+                    and animals. Bodies before screens because it changes what
+                    you build later in the day.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 space-y-3">
+                  <span className="text-3xl">🛠️</span>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Midday sessions
+                  </h3>
+                  <p className="text-white/85 text-lg leading-relaxed">
+                    Hands-on time with the tools we've brought: walkthroughs,
+                    live runs, teardowns, skill-shares, and hard questions put
+                    to people who actually want to run a community.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 space-y-3">
+                  <span className="text-3xl">🔥</span>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Evenings together
+                  </h3>
+                  <p className="text-white/85 text-lg leading-relaxed">
+                    Shared meals, fire, sauna, music, and games. The
+                    unstructured part, where most of the real collaboration
+                    quietly gets worked out.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 space-y-3">
+                  <span className="text-3xl">🌲</span>
+                  <h3 className="text-2xl font-semibold text-white">
+                    A day in the wild
+                  </h3>
+                  <p className="text-white/85 text-lg leading-relaxed">
+                    One day out of it entirely: a guided experience with
+                    facilitator Joshua Glass. You come back with a different set
+                    of priorities.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-center text-white/70 text-base max-w-2xl mx-auto">
+                Nothing here is finished, and that's the point. What we learn
+                using these tools together goes back into them—and out to the
+                communities they're for!
+              </p>
             </div>
           </div>
         </section>
@@ -504,14 +873,30 @@ export default function TouchGrassPage() {
                       Who should come?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      If you're a technologist, developer, or organizer who
-                      wants to broaden your perspective on the cultural and
-                      practical challenges of building regenerative community
-                      spaces, <span className="font-bold">// touch grass</span>{" "}
-                      is for you. You might be burnt out and craving something
-                      real, or just looking for hands-on ways to apply your
-                      skills off-screen. You're ready to trade the group chat
-                      for dirt under your fingernails. At least for a week.
+                      People already in a group project, or on their way into
+                      one. A co-living house, a land collective, a co-op, a DAO,
+                      a crew that keeps meaning to make it official. You've felt
+                      where it strains: decisions that stall, money that gets
+                      awkward, the people quietly carrying more than their
+                      share. You want to get better at holding the thing
+                      together for the long haul. Come with a project in hand or
+                      just the intention to start one.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-output">
+                    <AccordionTrigger className="text-xl font-semibold">
+                      What will we actually be doing?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-lg leading-relaxed">
+                      We're bringing a set of tools — community management
+                      software, solidarity funding, AI-assisted decision making
+                      — and exploring where they actually fit for a community
+                      project. Expect to try things, break a few, and argue
+                      about what should change. This isn't a hackathon and
+                      there's nothing you have to ship. You leave knowing how
+                      these tools feel in practice, and they leave better than
+                      they arrived.
                     </AccordionContent>
                   </AccordionItem>
 
@@ -539,7 +924,7 @@ export default function TouchGrassPage() {
                       Traditional Dream Factory has an incredible season of
                       events lined up! You might even want to stay for their
                       Permaculture deep dive which starts right after
-                      <b>// touchgrass</b>. Check their website for more
+                      <b>// touch grass</b>. Check their website for more
                       details:{" "}
                       <a
                         href="https://www.traditionaldreamfactory.com/"
@@ -570,13 +955,13 @@ export default function TouchGrassPage() {
                     <AccordionContent className="text-lg leading-relaxed">
                       <span className="font-bold">// touch grass</span> might
                       have started as a joke between Sara Bajor and Ron
-                      Turetzky, but it's now a real event. We both want to see
-                      regenerative, land-based communities proliferate, and
-                      suspect there are other technologists, organizers, and
-                      designers out there who feel the same way. So we created{" "}
-                      <span className="font-bold">// touch grass</span> to be a
-                      space where such people can meet each other and
-                      collaborate.
+                      Turetzky, but it's now a real event. We want to see
+                      regenerative, land-based communities proliferate—and the
+                      tooling for that barely exists. We've been involved in
+                      building it for years, and want to meet others who are
+                      doing the same. So we're inviting you to{" "}
+                      <span className="font-bold">// touch grass</span> with us,
+                      for long enough to find out what actually works.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -669,9 +1054,8 @@ export default function TouchGrassPage() {
                       Ready to join us?
                     </h3>
                     <p className="text-white/90 mb-6 text-lg">
-                      Applications are now open for{" "}
-                      <span className="font-bold">// touch grass</span> 2026.
-                      Limited spots available.
+                      Registration is capped at 30 participants. Tickets are
+                      all-inclusive of accommodations, meals, and programming.
                     </p>
                     <div ref={lowerButtonRef} className="relative inline-block">
                       <Button

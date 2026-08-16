@@ -3,10 +3,19 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+const PAYMENT_URLS: Record<string, string> = {
+  "bring-your-own-tent": "https://buy.stripe.com/eVq00lfr7df9d5R9Pvebu01",
+  "shared-tent-camping": "https://buy.stripe.com/cNi6oJa6N1wrgi31iZebu00",
+  "private-tent-single": "https://buy.stripe.com/cNi8wR5Qx5MH4zlf9Pebu02",
+  "private-tent-double": "https://buy.stripe.com/bJe9AVdiZejdfdZd1Hebu03",
+};
+
 export default function RSVPPage() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
+  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
+  const [selectedAccommodation, setSelectedAccommodation] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,8 +32,20 @@ export default function RSVPPage() {
       });
 
       if (response.ok) {
+        const accommodation = formData.get("accommodation");
+        const url =
+          typeof accommodation === "string"
+            ? PAYMENT_URLS[accommodation]
+            : undefined;
+
+        setPaymentUrl(url ?? null);
         setFormStatus("success");
         form.reset();
+        setSelectedAccommodation("");
+
+        if (url) {
+          window.location.href = url;
+        }
       } else {
         setFormStatus("error");
       }
@@ -41,16 +62,26 @@ export default function RSVPPage() {
             Thank you!
           </h1>
           <p className="text-xl text-earth-dark mb-6">
-            Your responses have been received. We'll be in touch soon with more
-            details.
+            {paymentUrl
+              ? "Your responses have been received. Taking you to payment now — your spot is confirmed once payment is complete."
+              : "Your responses have been received. We'll be in touch soon with payment details."}
           </p>
           <Button
             size="lg"
             className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
             asChild
           >
-            <a href="/">Return to Home</a>
+            {paymentUrl ? (
+              <a href={paymentUrl}>Continue to payment</a>
+            ) : (
+              <a href="/">Return to Home</a>
+            )}
           </Button>
+          {paymentUrl && (
+            <p className="text-sm text-muted-foreground mt-4">
+              Not redirected automatically? Use the button above.
+            </p>
+          )}
         </div>
       </div>
     );
@@ -68,8 +99,28 @@ export default function RSVPPage() {
             <span className="font-bold">// touch grass</span>
           </h1>
           <p className="text-xl text-white/90">
-            October 18-25, 2026 • Traditional Dream Factory <br /> Alentejo,
-            Portugal
+            October 18-25, 2026 •{" "}
+            <a
+              href="https://www.traditionaldreamfactory.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-white/50 hover:text-white transition-colors"
+            >
+              Traditional Dream Factory
+            </a>{" "}
+            <br />{" "}
+            <a
+              href="https://www.google.com/maps/place/Traditional+Dream+Factory/@38.0025485,-8.5638367,15.13z/data=!4m6!3m5!1s0xd1bb5a9aebf4183:0x70f027ce7d295aae!8m2!3d38.0030065!4d-8.5590876!16s%2Fg%2F11r36h93f4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-white/50 hover:text-white transition-colors"
+            >
+              Alentejo, Portugal
+            </a>
+          </p>
+          <p className="text-lg text-white/75 mt-4 max-w-xl mx-auto">
+            A week of hands-on practice with the tools—social and software—that
+            land-based communities run on.
           </p>
         </div>
 
@@ -173,6 +224,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="bring-your-own-tent"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -186,6 +238,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="shared-tent-camping"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -199,6 +252,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="private-tent-single"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -212,6 +266,7 @@ export default function RSVPPage() {
                     name="accommodation"
                     value="private-tent-double"
                     required
+                    onChange={(e) => setSelectedAccommodation(e.target.value)}
                     disabled={formStatus === "submitting"}
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
@@ -221,6 +276,51 @@ export default function RSVPPage() {
                 </label>
               </div>
             </div>
+
+            {/* Tent Gender Preference — only relevant when sharing a tent */}
+            {selectedAccommodation === "shared-tent-camping" && (
+              <div>
+                <label className="block text-sm font-semibold text-earth mb-3">
+                  Tent gender preference{" "}
+                  <span className="text-destructive">*</span>
+                </label>
+                <div className="space-y-3">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="male"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">Male</span>
+                  </label>
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="female"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">Female</span>
+                  </label>
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="tent-gender-preference"
+                      value="no-preference"
+                      required
+                      disabled={formStatus === "submitting"}
+                      className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
+                    />
+                    <span className="text-earth-dark">No preference</span>
+                  </label>
+                </div>
+              </div>
+            )}
 
             {/* Food Allergies */}
             <div>
@@ -255,6 +355,29 @@ export default function RSVPPage() {
                 disabled={formStatus === "submitting"}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
                 placeholder="Tell us what you're up to"
+              />
+            </div>
+
+            {/* What you'd build */}
+            <div>
+              <label
+                htmlFor="build-focus"
+                className="block text-sm font-semibold text-earth mb-2"
+              >
+                What are you most curious to try?
+                <span className="block text-xs font-normal text-muted-foreground mt-1">
+                  Governance, treasuries, rosters and coordination tools, land
+                  and legal structures, facilitation, food systems, or something
+                  we haven't thought of. Tell us what you'd bring, too.
+                </span>
+              </label>
+              <textarea
+                id="build-focus"
+                name="build-focus"
+                rows={4}
+                disabled={formStatus === "submitting"}
+                className="w-full px-4 py-3 rounded-lg border border-border bg-white text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-grass disabled:opacity-50"
+                placeholder="What you'd like to get your hands on, and the skills you're bringing"
               />
             </div>
 
@@ -305,8 +428,8 @@ export default function RSVPPage() {
               <br />
               <p className="font-bold">
                 Total cost ranges from €500-€1200 depending on your selected
-                accommodation. We will reach out with financial details and
-                payment options!
+                accommodation. After you submit, you'll be taken straight to
+                payment.
               </p>
             </div>
 

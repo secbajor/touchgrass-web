@@ -15,9 +15,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "// touch grass - an event for web3 builders",
+  title: "// touch grass - learning the tools for living together",
   description:
-    "An invitation to web3 builders determined to apply blockchain solutions to real world problems. Join us for a week-long residency at Traditional Dream Factory, a regenerative community space in the Alentejo, Portugal. Oct 18-25, 2026.",
+    "A week of practice for technologists and community builders at a working farm in Alentejo, Portugal: the software, the agreements, and the ground underneath. Oct 18-25, 2026.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [

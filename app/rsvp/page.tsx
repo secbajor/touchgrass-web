@@ -229,7 +229,7 @@ export default function RSVPPage() {
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
                   <span className="text-earth-dark">
-                    Bring your own tent — €500
+                    Bring your own tent — €550
                   </span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
@@ -243,7 +243,7 @@ export default function RSVPPage() {
                     className="mt-1 w-4 h-4 text-grass border-border focus:ring-grass focus:ring-2"
                   />
                   <span className="text-earth-dark">
-                    Shared tent camping (3 people per tent) — €500
+                    Shared tent camping (3 people per tent) — €550
                   </span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
@@ -427,7 +427,7 @@ export default function RSVPPage() {
               </p>
               <br />
               <p className="font-bold">
-                Total cost ranges from €500-€1200 depending on your selected
+                Total cost ranges from €550-€1200 depending on your selected
                 accommodation. After you submit, you'll be taken straight to
                 payment.
               </p>

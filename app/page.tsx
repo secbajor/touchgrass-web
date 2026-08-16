@@ -347,7 +347,7 @@ export default function TouchGrassPage() {
                         <div>
                           <span className="font-semibold">Cost:</span>
                           <br />
-                          €500-€1200 per person
+                          €550-€1200 per person
                           <br />
                           <span className="text-sm text-muted-foreground">
                             (includes meals & varies by tent option)

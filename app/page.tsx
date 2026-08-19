@@ -277,7 +277,7 @@ export default function TouchGrassPage() {
                 className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                 asChild
               >
-                <a href="/rsvp">Register now</a>
+                <a href="/rsvp">Apply now</a>
               </Button>
             </div>
           </div>
@@ -746,7 +746,7 @@ export default function TouchGrassPage() {
                     className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
                     asChild
                   >
-                    <a href="/rsvp">Register now</a>
+                    <a href="/rsvp">Apply now</a>
                   </Button>
                 </div>
               </div>
@@ -857,14 +857,29 @@ export default function TouchGrassPage() {
 
               <div className="bg-white/95 rounded-lg shadow-sm p-6 md:p-8">
                 <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="item-apply">
+                    <AccordionTrigger className="text-xl font-semibold">
+                      How does applying work?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-lg leading-relaxed">
+                      Fill out the application form and tell us a bit about
+                      yourself and what you're working on. We read every one.
+                      Space is capped at 30, so we're putting together a group
+                      that fits well together. If you're a good match, we'll
+                      email you a payment link — your spot is confirmed once
+                      payment is complete.
+                    </AccordionContent>
+                  </AccordionItem>
+
                   <AccordionItem value="item-1">
                     <AccordionTrigger className="text-xl font-semibold">
                       What's included?
                     </AccordionTrigger>
                     <AccordionContent className="text-lg leading-relaxed">
-                      Each ticket is all-inclusive, covering accommodations,
-                      meals, and programming. The only additional cost is
-                      getting yourself to the venue!
+                      Once payment is recevied for your registration, the event
+                      is all-inclusive, covering accommodations, meals, and
+                      programming. The only additional cost is getting yourself
+                      to the venue!
                     </AccordionContent>
                   </AccordionItem>
 
@@ -1054,8 +1069,9 @@ export default function TouchGrassPage() {
                       Ready to join us?
                     </h3>
                     <p className="text-white/90 mb-6 text-lg">
-                      Registration is capped at 30 participants. Tickets are
-                      all-inclusive of accommodations, meals, and programming.
+                      Attendance is by application and capped at 30
+                      participants. Registration is all-inclusive of
+                      accommodations, meals, and programming.
                     </p>
                     <div ref={lowerButtonRef} className="relative inline-block">
                       <Button
@@ -1063,7 +1079,7 @@ export default function TouchGrassPage() {
                         className="bg-white text-grass hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold"
                         asChild
                       >
-                        <a href="/rsvp">Register now</a>
+                        <a href="/rsvp">Apply now</a>
                       </Button>
                       {/* Hand pointing up at the button */}
                       <div

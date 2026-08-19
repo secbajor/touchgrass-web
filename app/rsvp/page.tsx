@@ -3,18 +3,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const PAYMENT_URLS: Record<string, string> = {
-  "bring-your-own-tent": "https://buy.stripe.com/eVq00lfr7df9d5R9Pvebu01",
-  "shared-tent-camping": "https://buy.stripe.com/cNi6oJa6N1wrgi31iZebu00",
-  "private-tent-single": "https://buy.stripe.com/cNi8wR5Qx5MH4zlf9Pebu02",
-  "private-tent-double": "https://buy.stripe.com/bJe9AVdiZejdfdZd1Hebu03",
-};
-
 export default function RSVPPage() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
-  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
   const [selectedAccommodation, setSelectedAccommodation] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,20 +24,9 @@ export default function RSVPPage() {
       });
 
       if (response.ok) {
-        const accommodation = formData.get("accommodation");
-        const url =
-          typeof accommodation === "string"
-            ? PAYMENT_URLS[accommodation]
-            : undefined;
-
-        setPaymentUrl(url ?? null);
         setFormStatus("success");
         form.reset();
         setSelectedAccommodation("");
-
-        if (url) {
-          window.location.href = url;
-        }
       } else {
         setFormStatus("error");
       }
@@ -56,32 +37,52 @@ export default function RSVPPage() {
 
   if (formStatus === "success") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-grass to-grass-dark flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-b from-grass to-grass-dark flex items-center justify-center p-4 py-20">
         <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8 md:p-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-grass mb-4">
             Thank you!
           </h1>
           <p className="text-xl text-earth-dark mb-6">
-            {paymentUrl
-              ? "Your responses have been received. Taking you to payment now — your spot is confirmed once payment is complete."
-              : "Your responses have been received. We'll be in touch soon with payment details."}
+            Your application for{" "}
+            <span className="font-bold">// touch grass</span> is in, and we're
+            genuinely glad you want to spend the week with us.
           </p>
+
+          <div className="bg-grass/5 border border-grass/20 rounded-lg p-6 text-left mb-8">
+            <p className="text-sm font-semibold text-earth uppercase tracking-wide mb-3">
+              What happens next
+            </p>
+            <ul className="space-y-3 text-earth-dark">
+              <li>
+                We read every application ourselves. Space is capped at 30
+                people, so we take our time putting the group together.
+              </li>
+              <li>
+                Once we've reviewed yours, we'll email you a payment link for
+                the accommodation you chose. Your spot is confirmed as soon as
+                payment is complete.
+              </li>
+              <li>
+                Anything you forgot to mention, or questions in the meantime?
+                Write to us at{" "}
+                <a
+                  href="mailto:brb@touchgrass.how"
+                  className="underline underline-offset-2 hover:text-grass transition-colors"
+                >
+                  brb@touchgrass.how
+                </a>
+                .
+              </li>
+            </ul>
+          </div>
+
           <Button
             size="lg"
             className="bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold"
             asChild
           >
-            {paymentUrl ? (
-              <a href={paymentUrl}>Continue to payment</a>
-            ) : (
-              <a href="/">Return to Home</a>
-            )}
+            <a href="/">Return to Home</a>
           </Button>
-          {paymentUrl && (
-            <p className="text-sm text-muted-foreground mt-4">
-              Not redirected automatically? Use the button above.
-            </p>
-          )}
         </div>
       </div>
     );
@@ -92,7 +93,7 @@ export default function RSVPPage() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            register for{" "}
+            apply to{" "}
             <span className="md:hidden">
               <br />
             </span>{" "}
@@ -119,7 +120,7 @@ export default function RSVPPage() {
             </a>
           </p>
           <p className="text-lg text-white/75 mt-4 max-w-xl mx-auto">
-            A week of hands-on practice with the tools—social and software—that
+            A week of hands-on practice with the social and software tools that
             land-based communities run on.
           </p>
         </div>
@@ -420,16 +421,17 @@ export default function RSVPPage() {
 
             <div>
               <p>
-                Once you submit this form, your responses will be reviewed by
-                the event team. We are doing our best to accommodate everyone
-                who is interested, but space is limited so we can only confirm
-                your attendance once payment has been made.
+                Attendance is by application. Once you submit this form, the
+                event team will read it and get back to you. We are doing our
+                best to accommodate everyone who is interested, but space is
+                capped at 30 people.
               </p>
               <br />
               <p className="font-bold">
-                Total cost ranges from €550-€1200 depending on your selected
-                accommodation. After you submit, you'll be taken straight to
-                payment.
+                If your application is accepted, we'll email you a payment link
+                for your chosen accommodation — total cost ranges from €550 to
+                €1200. Your spot is confirmed once payment is complete. Nothing
+                is due now.
               </p>
             </div>
 
@@ -449,7 +451,9 @@ export default function RSVPPage() {
                 disabled={formStatus === "submitting"}
                 className="w-full bg-grass text-white hover:bg-grass-dark text-lg px-8 py-6 h-auto font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {formStatus === "submitting" ? "Submitting..." : "Submit"}
+                {formStatus === "submitting"
+                  ? "Submitting..."
+                  : "Submit application"}
               </Button>
             </div>
           </form>
